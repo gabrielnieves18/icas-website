@@ -14,7 +14,7 @@ import loginPageReducer from 'containers/Login/reducers';
 
 // To-Do: remove on production build
 import profileReducer from 'containers/Profile/reducers';
-import homeReducer from 'containers/Home/reducers';
+import homePageReducer from 'containers/Home/reducers';
 
 /**
  * routeReducer
@@ -51,7 +51,7 @@ export default function createReducer(asyncReducers) {
     language: languageProviderReducer,
     login: loginPageReducer,
     profile: profileReducer, // To-Do: Remove
-    home: homeReducer, // To-Do: remove
+    home: homePageReducer, // To-Do: remove
     route: routeReducer,
     global: globalReducers,
     form: formReducer,
