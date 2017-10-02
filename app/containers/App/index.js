@@ -17,8 +17,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import Footer from '../../components/Footer';
-import Header from '../AppHeader';
 import withProgressBar from './../../components/ProgressBar';
 
 import {
@@ -50,7 +48,7 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
   updateWindowDimensions() {
     this.props.updateScreenDimensions(window.innerHeight, window.innerWidth);
 
-    if (window.innerWidth <= 500 ) {
+    if (window.innerWidth <= 500) {
       this.props.updateMobile();
     } else {
       this.props.updateDesktop();

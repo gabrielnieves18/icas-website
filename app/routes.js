@@ -41,27 +41,6 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: ROUTES.PKG_EDITOR,
-      name: 'pkgEditor',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/Editor/reducers'),
-          import('containers/Editor/sagas'),
-          import('containers/Editor'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('pkgEditor', reducer.default);
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
-    },
-    {
       path: ROUTES.HOME,
       name: 'home',
       getComponent(nextState, cb) {

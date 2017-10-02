@@ -28,7 +28,7 @@ const HomeDrawer = (
     updateCurrentSection,
   }) =>
   (
-    <Drawer docked={!isMobile} open={open || !isMobile} openSecondary={isMobile} onRequestChange={(open) => setOpen({open})} >
+    <Drawer docked={!isMobile} open={open && isMobile} openSecondary={isMobile} onRequestChange={(open) => setOpen({open})} >
       <DrawerHead avatar={avatar} setAvatar={updateAvatar}/>
       <FormattedMessage {...messages.dashboardLabel} >
         {

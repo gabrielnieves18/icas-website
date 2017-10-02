@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SpotinIconLogo from '../SpotinIconLogo';
+import UMBCLogo from '../UMBCLogo';
 
 import LoadCirc0 from './LoadingCirc0';
 import LoadCirc1 from './LoadingCirc1';
@@ -17,7 +17,7 @@ function LoadingLogo(props) {
 
   return (
     <div height={`${height * 1.25}px`} width={`${width * 1.10}px !important`} style={{ textAlign: 'center' }}>
-      <SpotinIconLogo height={height} width={width} />
+      <UMBCLogo height={height} width={width} />
       <div>
         <ol style={{ display: 'flex', padding: '0px', justifyContent: 'center', listStyleType: 'none' }}>
           <LoadCirc0 radius={circleRadius} />

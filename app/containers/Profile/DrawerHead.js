@@ -8,38 +8,38 @@ import PropTypes from 'prop-types';
 import AddProfileImageDiv from './AddProfileImageDiv';
 import AvatarContainer from './AvatarContainer';
 import Button from '../../components/Button';
-import SpotinIconLogo from '../../components/SpotinIconLogo';
+import UMBCLogo from '../../components/UMBCLogo';
 
 const DrawerHead = ({ avatar, style, setAvatar }) => {
-
   const getAvatar = (evt) => {
     const files = evt.target.files;
     const reader = new FileReader();
+    let avt = avatar;
 
     reader.onloadend = () => {
-      avatar = reader.result;
+      avt = reader.result;
       setAvatar(reader.result, Object(files[0]));
     };
 
     if (files.length > 0) {
       // Set new avatar
-      avatar = reader.readAsDataURL(files[0]);
+      avt = reader.readAsDataURL(files[0]);
     }
-
   };
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
-      <div style={{alignSelf: 'center', flexGrow: '1', margin: '24px 6px 24px 0px'}}>
-        <SpotinIconLogo width={140} height={60}/>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ alignSelf: 'center', flexGrow: '1', margin: '24px 6px 24px 0px' }}>
+        <UMBCLogo width={250} height={96} />
       </div>
       <AvatarContainer>
         {
           // Display the "Add Profile pic/avatar" button If no profile picture is available
           // Else, display the profile pic/avatar
           avatar.get('url') ? (
-            <Button style={{background: 'none', border: 'none', padding: '0px', margin: '0px'}}>
+            <Button style={{ background: 'none', border: 'none', padding: '0px', margin: '0px' }}>
               <img
+                alt="User Avatar"
                 src={avatar.get('url')}
                 style={{
                   backgroundClip: 'padding-box',
@@ -47,26 +47,26 @@ const DrawerHead = ({ avatar, style, setAvatar }) => {
                   flexGrow: '1',
                   marginBottom: '64px',
                   height: '120px',
-                  width: '120px'
+                  width: '120px',
                 }}
               />
               <input
                 type="file"
                 name="pic"
                 accept="image/*"
-                style={{position: 'absolute', top: '16%', left: '20%', width: '30px', opacity: '0'}}
+                style={{ position: 'absolute', top: '16%', left: '20%', width: '30px', opacity: '0' }}
                 onChange={getAvatar.bind(this)}
               />
             </Button>
           ) : (
             <AddProfileImageDiv>
-              <Button style={{background: 'none', border: 'none', padding: '0px', margin: '0px'}}>
-                <AddPhoto style={{height: '36px', width: '36px'}}/>
+              <Button style={{ background: 'none', border: 'none', padding: '0px', margin: '0px' }}>
+                <AddPhoto style={{ height: '36px', width: '36px' }} />
                 <input
                   type="file"
                   name="pic"
                   accept="image/*"
-                  style={{position: 'absolute', top: '16%', left: '20%', width: '30px', opacity: '0'}}
+                  style={{ position: 'absolute', top: '16%', left: '20%', width: '30px', opacity: '0' }}
                   onChange={getAvatar.bind(this)}
                 />
               </Button>

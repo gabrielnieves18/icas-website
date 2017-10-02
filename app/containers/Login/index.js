@@ -9,14 +9,14 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectLocale } from '../LanguageProvider/selectors';
 import { FormattedMessage } from 'react-intl';
+import { makeSelectLocale } from '../LanguageProvider/selectors';
 
 import AlertDiv from './AlertDiv';
 import ActiveSpan from './ActiveSpan'
 import Button from './Button';
 import CenteredDiv from './CenteredDiv';
-import SpotinIconLogo from '../../components/SpotinIconLogo';
+import UMBCLogo from '../../components/UMBCLogo';
 import FacebookLogo from '../../components/FacebookLogo';
 import GoogleLogo from '../../components/GoogleLogo';
 import LocaleToggle from '../LocaleToggle';
@@ -95,7 +95,7 @@ class LoginPage extends React.PureComponent { // eslint-disable-line react/prefe
           ]}
         />
         <LogoWrapper>
-          <SpotinIconLogo height={50} width={120} />
+          <UMBCLogo height={50} width={120} />
         </LogoWrapper>
         <CenteredDiv>
           <LoginViewWrapper>

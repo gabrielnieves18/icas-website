@@ -6,12 +6,8 @@
  */
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
-import Badge from 'material-ui/Badge';
-import SVGMail from 'material-ui/svg-icons/content/mail';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -21,42 +17,34 @@ import {
   makeSelectAvatar,
   makeSelectIsMobile,
   makeSelectLoading,
-  makeSelectOpenChat,
   makeSelectScreenDimentions,
 } from '../App/selectors';
 
 import {
   makeSelectCurrentSection,
   makeSelectCurrentObjectData,
-  makeSelectOngoingPackages,
-  makeSelectUncompletedPackages,
 } from './selectors';
 
 import {
-  loadPreviousPage,
-  loadNextPage,
   updateCurrentSection,
 } from './actions';
 
 import {
-  closeChat,
-  openChat,
   startLoading,
   stopLoading,
   updateAvatar,
 } from '../App/actions';
 
-import { HOME_SECTIONS } from './constants';
 import { ROUTES } from '../../constants';
 
 import Body from './Body';
 import Button from './Button';
-import ChatNotReadyModal from '../../components/ChatNotReadyModal';
 import HomeDrawer from './HomeDrawer';
 import LoadingLogo from '../../components/LoadingLogo';
+import LocaleToggle from '../LocaleToggle';
 import messages from './messages';
 import PackageMenuWrapper from './PackageMenuWrapper';
-import SectionDiv from './SectionDiv';
+import UMBCLogo from '../../components/UMBCLogo';
 import WelcomeDiv from './WelcomeDiv';
 import Wrapper from './Wrapper';
 
@@ -67,6 +55,8 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     this.state = {
       open: false,
     };
+
+    this.setState = this.setState.bind(this);
   }
 
   componentDidMount() {
@@ -79,15 +69,10 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     const {
       avatar,
       appLoading,
-      closeHomeChat,
       currentSection,
       isMobile,
-      isChatOpen,
-      openHomeChat,
-      ongoingPackages,
       router,
       screenDimen,
-      uncompletedPackages,
       updateAvatar,
     } = this.props;
 
@@ -96,27 +81,19 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         background: '#00a680',
         position: 'absolute',
         left: '0px',
-        top: '0px'
+        top: '0px',
       },
-      badge: {
-        badgeStyle: {
-          top: 16,
-          right: 16,
-          zIndex: '500'
-        },
-        style: {
-          position: 'fixed',
-          right: `${ isMobile ? '0px' : '16px' }`,
-          bottom: `${ isMobile ? '16px' : '32px' }`
-        }
+      style: {
+        position: 'fixed',
+        right: `${isMobile ? '0px' : '16px'}`,
+        bottom: `${isMobile ? '16px' : '32px'}`,
       },
-      navItem: {
-        fontStyle: { color: 'black' },
-        iconStyle: { color: '' },
-      },
-      navItemSelected: {
-        fontColorStyle: { color: 'white' },
-        iconStyle: { color: '' },
+      localeToggle: {
+        padding: '10px 16px',
+        position: 'fixed',
+        width: '250px',
+        bottom: '8px',
+        left: '8px',
       },
       msgDiv: {
         color: 'rgb(96, 101, 104)',
@@ -125,29 +102,24 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         textAlign: 'start',
         width: '100%',
       },
-      packageCollection: {
-        border: 'solid',
-        margin: '16px',
-        padding: '16px'
-      },
       underscoreDiv: {
         borderBottom: '1px solid rgb(210, 210, 210)',
-        padding: '0 25%'
+        padding: '0 25%',
       },
       welcomeSpan: {
         fontSize: '42px',
         fontFamily: 'Helvetica Neue, Arial, sans-serif',
         fontWeight: 'lighter',
-        padding: '16px'
+        padding: '16px',
       },
     };
 
     return (
       <Wrapper>
         <Helmet
-          title="Spotter Dashboard Home"
+          title="Image Context As a Service (ICAS)"
           meta={[
-            { name: 'description', content: 'Spotin Spotter Dashboard Home Page' },
+            { name: 'description', content: 'ICAS Home Page' },
           ]}
         />
         {
@@ -161,19 +133,26 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                 // Only display navBar if being displayed on a mobile device
                 // Use static navigation drawer If Desktop is displayed on a desktop
                 isMobile ? (
-                   <AppBar
-                     title="Spotin"
-                     style={styles.appBar}
-                     onLeftIconButtonTouchTap={ (evt) => this.handleToggle() }
-                   />
-                 ) : null
+                  <AppBar
+                    title="ICAS v0.0.1"
+                    style={styles.appBar}
+                    onLeftIconButtonTouchTap={() => this.handleToggle()}
+                  />
+                ) : (
+                  // Display navigation menu
+                  <div style={{ position: 'absolute', top: '16px', left: '16px' }}>
+                    <section style={{ width: '100%' }}>
+                      <UMBCLogo height={74} width={200} />
+                    </section>
+                  </div>
+                )
               }
               <HomeDrawer
                 avatar={avatar}
-                currentSection={ currentSection }
+                currentSection={currentSection}
                 isMobile={isMobile}
                 open={this.state.open}
-                setOpen={this.setState.bind(this)}
+                setOpen={this.setState}
                 smallScreen={screenDimen.get('height') < 750}
                 updateAvatar={updateAvatar}
                 updateCurrentSection={this.props.updateCurrentSection}
@@ -184,96 +163,38 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                     {
                       (formattedMSG) => (
                         <span style={styles.welcomeSpan} >
-                          {`${formattedMSG} Gabriel`}
+                          {formattedMSG}
                         </span>
                       )
                     }
                   </FormattedMessage>
                   <div style={styles.underscoreDiv} />
                 </WelcomeDiv>
-                {
-                  ( currentSection === HOME_SECTIONS.uncompleted ) && (
-                    <SectionDiv>
+                <div style={{ width: '100%', height: '100%' }}>
+                  <PackageMenuWrapper>
+                    <FormattedMessage {...messages.manageProfileLabel}>
                       {
-                        ongoingPackages.toJS().map((item) => (
-                          <div style={styles.packageCollection}>
-                            <span>PKG Title</span>
-                            <div>PKG Description</div>
+                        (formattedMSG) => (
+                          <div style={styles.msgDiv}>
+                            <h3>{formattedMSG}</h3>
                           </div>
-                        ))
+                        )
                       }
-                    </SectionDiv>
-                  ) || (
-                    ( currentSection === HOME_SECTIONS.ongoing ) && (
-                      <SectionDiv>
-                        {
-                          uncompletedPackages.toJS().map((item) => (
-                            <div style={styles.packageCollection} >
-                              <span>PKG Title</span>
-                              <div>PKG Description</div>
-                            </div>
-                          ))
-                        }
-                      </SectionDiv>
-                    ) || (
-                      <div style={{ width: '100%', height: '100%' }}>
-                        <PackageMenuWrapper>
-                          <FormattedMessage {...messages.addNewTripsLabel}>
-                            {
-                              (formattedMSG) => (
-                                <div style={styles.msgDiv}>
-                                  <h3>{formattedMSG}</h3>
-                                </div>
-                              )
-                            }
-                          </FormattedMessage>
-                          <FormattedMessage {...messages.addNewTripsButtonLabel} style={styles.msgDiv} >
-                            {
-                              (formattedMSG) => (
-                                <Button onClick={() => router.push(ROUTES.PKG_EDITOR)} >
-                                  {formattedMSG}
-                                  </Button>
-                              )
-                            }
-                          </FormattedMessage>
-                        </PackageMenuWrapper>
-                        <PackageMenuWrapper>
-                          <FormattedMessage {...messages.manageProfileLabel}>
-                            {
-                              (formattedMSG) => (
-                                <div style={styles.msgDiv}>
-                                  <h3>{formattedMSG}</h3>
-                                </div>
-                              )
-                            }
-                          </FormattedMessage>
-                          <FormattedMessage {...messages.manageProfileButtonLabel} style={styles.msgDiv} >
-                            {
-                              (formattedMSG) => (
-                                <Button onClick={() => router.push(ROUTES.PROFILE)} >
-                                  {formattedMSG}
-                                </Button>
-                              )
-                            }
-                          </FormattedMessage>
-                        </PackageMenuWrapper>
-                      </div>
-                    )
-                  )
-                }
-                <section>
-                  <Badge
-                    badgeContent={27}
-                    secondary={true}
-                    badgeStyle={styles.badge.badgeStyle}
-                    style={styles.badge.style}
-                  >
-                    <FloatingActionButton onClick={openHomeChat}>
-                      <SVGMail />
-                    </FloatingActionButton>
-                  </Badge>
-                  <ChatNotReadyModal open={isChatOpen} onDismiss={closeHomeChat} />
-                </section>
+                    </FormattedMessage>
+                    <FormattedMessage {...messages.manageProfileButtonLabel} style={styles.msgDiv} >
+                      {
+                        (formattedMSG) => (
+                          <Button onClick={() => router.push(ROUTES.PROFILE)} >
+                            {formattedMSG}
+                          </Button>
+                        )
+                      }
+                    </FormattedMessage>
+                  </PackageMenuWrapper>
+                </div>
+                <div style={styles.localeToggle}>
+                  <LocaleToggle />
+                </div>
               </Body>
             </div>
           )
@@ -286,18 +207,14 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
 HomePage.propTypes = {
   avatar: PropTypes.object,
   appLoading: PropTypes.bool,
-  closeChat: PropTypes.func,
   currentObjectSelected: PropTypes.bool,
   currentSection: PropTypes.number,
   initLoadData: PropTypes.func,
   isMobile: PropTypes.bool,
-  isChatOpen: PropTypes.bool,
-  openChat: PropTypes.func,
-  ongoingPackages: PropTypes.object,
   router: PropTypes.object,
   stopLoading: PropTypes.func,
   screenDimen: PropTypes.object,
-  uncompletedPackages: PropTypes.object,
+  updateCurrentSection: PropTypes.func,
   updateAvatar: PropTypes.func,
 };
 
@@ -306,20 +223,11 @@ const mapStateToProps = createStructuredSelector({
   appLoading: makeSelectLoading(),
   currentSection: makeSelectCurrentSection(),
   isMobile: makeSelectIsMobile(),
-  isChatOpen: makeSelectOpenChat(),
   screenDimen: makeSelectScreenDimentions(),
-  ongoingPackages: makeSelectOngoingPackages(),
-  uncompletedPackages: makeSelectUncompletedPackages(),
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
-    closeHomeChat: () => {
-      dispatch(closeChat());
-    },
-    openHomeChat: () => {
-      dispatch(openChat());
-    },
     stopLoading: () => {
       dispatch(stopLoading());
     },

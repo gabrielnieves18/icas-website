@@ -33,16 +33,6 @@ const makeSelectPaginationCount = () => createSelector(
   (homePageState) => homePageState.get('paginationCount')
 );
 
-const makeSelectOngoingPackages = () => createSelector(
-  selectSearchQuery,
-  (homePageState) => homePageState.get('ongoingPackages')
-);
-
-const makeSelectUncompletedPackages = () => createSelector(
-  selectSearchQuery,
-  (homePageState) => homePageState.get('uncompletedPackages')
-);
-
 export {
   selectSearchQuery,
   makeSelectCurrentSection,
@@ -50,6 +40,4 @@ export {
   makeSelectCurrentObjectSelected,
   makeSelectCurrentPageIndex,
   makeSelectPaginationCount,
-  makeSelectOngoingPackages,
-  makeSelectUncompletedPackages,
 };

@@ -8,7 +8,6 @@ export const ROUTES = {
   INDEX: '/',
   HOME: '/home',
   PROFILE: '/profile',
-  PKG_EDITOR: 'package-editor',
 };
 
 export const SPOT_TYPES = ['business', 'spot'];

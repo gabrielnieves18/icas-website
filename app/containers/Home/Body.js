@@ -9,7 +9,7 @@ const Body = styled.div`
   @media all {
     //background: yellow;
     height: 100%;
-    padding: 16px 16px 16px 272px;
+    padding: 16px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -35,7 +35,7 @@ const Body = styled.div`
 
   @media (min-width: 640px) {
     height: 100%;
-    padding: 16px 16px 16px 272px;
+    padding: 16px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;

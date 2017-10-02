@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import AddProfileImageDiv from './AddProfileImageDiv';
 import AvatarContainer from './AvatarContainer';
 import Button from '../../components/Button';
-import SpotinIconLogo from '../../components/SpotinIconLogo';
+import UMBCLogo from '../../components/UMBCLogo';
 
 const DrawerHead = ({ avatar, style, setAvatar }) => {
 
@@ -28,9 +28,9 @@ const DrawerHead = ({ avatar, style, setAvatar }) => {
   };
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
-      <div style={{alignSelf: 'center', flexGrow: '1', margin: '24px 6px 24px 0px'}}>
-        <SpotinIconLogo width={140} height={60}/>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ alignSelf: 'center', flexGrow: '1', margin: '24px 6px 24px 0px' }}>
+        <UMBCLogo width={140} height={60} />
       </div>
       <AvatarContainer>
         {

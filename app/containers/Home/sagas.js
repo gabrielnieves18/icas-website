@@ -9,19 +9,9 @@ import axios from 'axios';
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-import {
-  DISPLAY_QUANTITY_UPDATED,
-} from '../DisplayPerPageDropdown/constants';
-
 import { loadObjectData } from './actions';
 
 import { stopLoading } from '../App/actions';
-
-import { makeSelectCurrentPageIndex } from './selectors';
-
-import {
-  makeSelectDisplayQuantity,
-} from '../DisplayPerPageDropdown/selectors';
 
 import {
   API_GET_SPOTERS_BASE,
@@ -37,7 +27,7 @@ import { checkStatus } from './../../utils/request';
  */
 export function* loadData() {
   // Select username from store
-  const currentPage = yield select(makeSelectCurrentPageIndex());
+  // const currentPage = yield select(makeSelectCurrentPageIndex());
 
   // Load Spots By default
   // Return all Spots if the * character is used.
@@ -67,11 +57,12 @@ export function* requestData() {
   // Watches for SEARCH_QUERY_UPDATED actions and calls loadData when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
-  const perPageQuantityWatcher = yield takeLatest(DISPLAY_QUANTITY_UPDATED, loadData);
+
+  // const perPageQuantityWatcher = yield takeLatest(DISPLAY_QUANTITY_UPDATED, loadData);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
-  yield cancel(perPageQuantityWatcher);
+  // yield cancel(perPageQuantityWatcher);
 }
 
 // Bootstrap sagas

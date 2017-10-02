@@ -9,19 +9,11 @@ import axios from 'axios';
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-import {
-  DISPLAY_QUANTITY_UPDATED,
-} from '../DisplayPerPageDropdown/constants';
-
 import { loadObjectData } from './actions';
 
 import { stopLoading } from '../App/actions';
 
 import { makeSelectCurrentPageIndex } from './selectors';
-
-import {
-  makeSelectDisplayQuantity,
-} from '../DisplayPerPageDropdown/selectors';
 
 import {
   API_GET_SPOTERS_BASE,

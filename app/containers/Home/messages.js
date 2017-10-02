@@ -10,50 +10,50 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   addNewTripsButtonLabel: {
     id: 'spotin.components.Home.addTrip.button.label',
-    defaultMessage: "Start New Package",
+    defaultMessage: 'Start New Package',
   },
   addNewTripsLabel: {
     id: 'spotin.components.Home.addTrip.label',
-    defaultMessage: "Add new trips",
+    defaultMessage: 'Add new trips',
   },
   dashboardLabel: {
     id: 'spotin.components.Home.dashboard.label',
-    defaultMessage: "DASHBOARD",
+    defaultMessage: 'DASHBOARD',
   },
   legalLabel: {
     id: 'spotin.components.Home.legal.label',
-    defaultMessage: "LEGAL",
+    defaultMessage: 'LEGAL',
   },
   legalTermsLabel: {
     id: 'spotin.components.Home.legal.terms.label',
-    defaultMessage: "Terms",
+    defaultMessage: 'Terms',
   },
   legalPrivacyLabel: {
     id: 'spotin.components.Home.legal.privacy.label',
-    defaultMessage: "Privacy",
+    defaultMessage: 'Privacy',
   },
   manageProfileButtonLabel: {
     id: 'spotin.components.Home.manageProfile.button.label',
-    defaultMessage: "Manage Profile",
+    defaultMessage: 'Manage Profile',
   },
   manageProfileLabel: {
     id: 'spotin.components.Home.manageProfile.label',
-    defaultMessage: "Manage your profile",
+    defaultMessage: 'Manage your profile',
   },
   homeLabel: {
     id: 'spotin.components.Home.home.label',
-    defaultMessage: "Home",
+    defaultMessage: 'Home',
   },
   ongoingLabel: {
     id: 'spotin.components.Home.ongoing.label',
-    defaultMessage: "Ongoing",
+    defaultMessage: 'Ongoing',
   },
   welcomeLabel: {
     id: 'spotin.components.Home.welcome.label',
-    defaultMessage: "Welcome",
+    defaultMessage: 'Welcome to the ICAS System',
   },
   uncompletedLabel: {
     id: 'spotin.components.Home.uncompleted.label',
-    defaultMessage: "Uncompleted",
+    defaultMessage: 'Uncompleted',
   },
 });

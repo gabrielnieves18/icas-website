@@ -3,27 +3,13 @@
  */
 
 import {
-  CLOSE_CHAT,
   IS_DESKTOP,
   IS_MOBILE,
   LOADING_START,
   LOADING_STOP,
-  OPEN_CHAT,
   SCREEN_DIMEN_CHANGED,
   SET_USER_AVATAR,
 } from './constants';
-
-
-/**
- *
- * To-DO
- *
- */
-export function closeChat() {
-  return {
-    type: CLOSE_CHAT,
-  };
-}
 
 /**
  *
@@ -75,17 +61,6 @@ export function stopLoading() {
  * To-DO
  *
  */
-export function openChat() {
-  return {
-    type: OPEN_CHAT,
-  };
-}
-
-/**
- *
- * To-DO
- *
- */
 export function updateAvatar(url, data) {
   return {
     type: SET_USER_AVATAR,
@@ -103,6 +78,6 @@ export function updateScreenDimensions(height, width) {
   return {
     type: SCREEN_DIMEN_CHANGED,
     height,
-    width
+    width,
   };
 }

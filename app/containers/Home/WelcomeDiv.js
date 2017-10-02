@@ -1,14 +1,14 @@
 /**
  * Created by gaby on 7/5/17.
  */
-import styled, { injectGlobal } from 'styled-components';
+import styled from 'styled-components';
 
 /* eslint-disable no-tabs */
 // language=SCSS
 const Wrapper = styled.div`
   @media all {
     width: 100%;
-    padding: 64px 28% 15px 28%;
+    padding: 96px 28% 15px 28%;
     flex-grow: 1;
   }
 
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
   @media (min-width: 640px) {
     width: 100%;
-    padding: 64px 28% 15px 28%;
+    padding: 96px 18% 15px 18%;
     flex-grow: 1;
   }
 

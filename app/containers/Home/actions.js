@@ -4,8 +4,6 @@
 import {
   CURRENT_SECTION,
   OBJECT_SELECTED,
-  PREVIOUS_PAGE,
-  NEXT_PAGE,
 } from './constants';
 
 /**
@@ -19,28 +17,6 @@ export function loadObjectData(payload) {
   return {
     type: OBJECT_SELECTED,
     payload,
-  };
-}
-
-/**
- * Dispatched when the user the "Previous" button at the bottom of the HomePage Component
- *
- * @return {object}        An action object with a type of PREVIOUS_PAGE
- */
-export function loadPreviousPage() {
-  return {
-    type: PREVIOUS_PAGE,
-  };
-}
-
-export function loadNextPage() {
-  /**
-   * Dispatched when the user the "Next" button at the bottom of the HomePage Component
-   *
-   * @return {object}        An action object with a type of NEXT_PAGE
-   */
-  return {
-    type: NEXT_PAGE,
   };
 }
 
