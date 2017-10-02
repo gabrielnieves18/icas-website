@@ -28,21 +28,9 @@ const HomeDrawer = (
     updateCurrentSection,
   }) =>
   (
-    <Drawer docked={!isMobile} open={open && isMobile} openSecondary={isMobile} onRequestChange={(open) => setOpen({open})} >
-      <DrawerHead avatar={avatar} setAvatar={updateAvatar}/>
-      <FormattedMessage {...messages.dashboardLabel} >
-        {
-          (formattedMSG) => (<DrawerHeader headerLabel={formattedMSG} />)
-        }
-      </FormattedMessage>
-      <Dashboard currentRow={currentSection} style={{ marginBottom: '15%' }} isMobile={isMobile} onSectionTouched={updateCurrentSection}/>
-      <FormattedMessage {...messages.legalLabel} >
-        {
-          (formattedMSG) => (<DrawerHeader headerLabel="LEGAL" />)
-        }
-      </FormattedMessage>
-      <Legal />
-      <div style={{ padding: '10px 16px', position: `${smallScreen ? 'relative' : 'absolute' }`, width: '100%', bottom: '0'}}>
+    <Drawer docked={!isMobile} open={open && isMobile} openSecondary={isMobile} onRequestChange={(open) => setOpen({ open })} >
+      <DrawerHead avatar={avatar} setAvatar={updateAvatar} />
+      <div style={{ padding: '10px 16px', position: 'absolute', width: '100%', bottom: '0' }}>
         <LocaleToggle />
       </div>
     </Drawer>

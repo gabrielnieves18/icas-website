@@ -149,7 +149,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                 // Use static navigation drawer If Desktop is displayed on a desktop
                 isMobile ? (
                   <AppBar
-                    title="Spotin"
+                    title="ICAS v0.0.1"
                     style={styles.appBar}
                     onLeftIconButtonTouchTap={() => this.handleToggle()}
                   />

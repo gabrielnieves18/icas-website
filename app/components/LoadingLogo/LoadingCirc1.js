@@ -14,7 +14,7 @@ const dropFade = keyframes`
   }
 
   20% {
-    background-color: #a8bd22;
+    background-color: rgb(251, 34, 34);
   }
 
   40% {

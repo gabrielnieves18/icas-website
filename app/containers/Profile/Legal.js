@@ -15,13 +15,13 @@ const Legal = ({ style }) => (
       <div style={{ marginBottom: '14px' }} >
         <FormattedMessage {...messages.legalTermsLabel} >
           {
-            (formattedMSG) => (<Link href="http://www.spotin.io/terms" target="none" onlyActiveOnIndex={false} >{formattedMSG}</Link>)
+            (formattedMSG) => (<Link href="" target="none" onlyActiveOnIndex={false} >{formattedMSG}</Link>)
           }
         </FormattedMessage>
       </div>
       <FormattedMessage {...messages.legalPrivacyLabel} >
         {
-          (formattedMSG) => (<Link href="http://www.spotin.io/privacy-policy" target="none" onlyActiveOnIndex={false} >{formattedMSG}</Link>)
+          (formattedMSG) => (<Link href="" target="none" onlyActiveOnIndex={false} >{formattedMSG}</Link>)
         }
       </FormattedMessage>
     </div>

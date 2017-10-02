@@ -39,6 +39,7 @@ const DrawerHead = ({ avatar, style, setAvatar }) => {
           avatar.get('url') ? (
             <Button style={{background: 'none', border: 'none', padding: '0px', margin: '0px'}}>
               <img
+                alt="Analise"
                 src={avatar.get('url')}
                 style={{
                   backgroundClip: 'padding-box',
@@ -46,7 +47,7 @@ const DrawerHead = ({ avatar, style, setAvatar }) => {
                   flexGrow: '1',
                   marginBottom: '64px',
                   height: '120px',
-                  width: '120px'
+                  width: '120px',
                 }}
               />
               <input

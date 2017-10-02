@@ -43,11 +43,11 @@ const ActiveSpan = styled.button`
   }
 
   @media (min-width: 320px) {
-    width: 80%;
+    width: ${(props) => props.width ? props.width : '80%'};
   }
 
   @media (min-width: 640px) {
-    width: 65%;
+    width: ${(props) => props.width ? props.width : '65%'};
   }
 `;
 

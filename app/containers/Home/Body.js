@@ -1,7 +1,7 @@
 /**
  * Created by gaby on 7/5/17.
  */
-import styled, { injectGlobal } from 'styled-components';
+import styled from 'styled-components';
 
 /* eslint-disable no-tabs */
 // language=SCSS

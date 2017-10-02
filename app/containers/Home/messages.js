@@ -50,7 +50,7 @@ export default defineMessages({
   },
   welcomeLabel: {
     id: 'spotin.components.Home.welcome.label',
-    defaultMessage: 'Welcome to the ICAS System',
+    defaultMessage: 'Welcome to the ICAS system',
   },
   uncompletedLabel: {
     id: 'spotin.components.Home.uncompleted.label',

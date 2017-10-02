@@ -10,7 +10,7 @@ import styled, { keyframes } from 'styled-components';
 // language=SCSS
 const dropFade = keyframes`
   0% {
-    background-color: #a8bd22;
+    background-color: rgb(251, 34, 34);
   }
 
   20% {
@@ -30,7 +30,7 @@ const dropFade = keyframes`
   }
 
   100% {
-    background-color: #a8bd22;
+    background-color: rgb(251, 34, 34);
   }
 `;
 

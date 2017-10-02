@@ -40,6 +40,8 @@ import { ROUTES } from '../../constants';
 import Body from './Body';
 import Button from './Button';
 import HomeDrawer from './HomeDrawer';
+import H3 from '../EditorForms/H3';
+import H4 from '../EditorForms/H4';
 import LoadingLogo from '../../components/LoadingLogo';
 import LocaleToggle from '../LocaleToggle';
 import messages from './messages';
@@ -74,6 +76,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
       router,
       screenDimen,
       updateAvatar,
+      uploadImage,
     } = this.props;
 
     const styles = {
@@ -94,11 +97,12 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         width: '250px',
         bottom: '8px',
         left: '8px',
+        zIndex: '1200',
       },
       msgDiv: {
         color: 'rgb(96, 101, 104)',
         height: '16px',
-        paddingLeft: '32px',
+        paddingLeft: '18px',
         textAlign: 'start',
         width: '100%',
       },
@@ -124,8 +128,11 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
         />
         {
           appLoading ? (
-            <div style={{ marginTop: '25%', marginBottom: '25%' }}>
+            <div style={{ paddingTop: '18%', textAlign: 'center' }}>
               <LoadingLogo />
+              <H3 style={{ marginTop: '24px' }} >
+                Good things come to those who wait!
+              </H3>
             </div>
           ) : (
             <div>
@@ -143,6 +150,9 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                   <div style={{ position: 'absolute', top: '16px', left: '16px' }}>
                     <section style={{ width: '100%' }}>
                       <UMBCLogo height={74} width={200} />
+                    </section>
+                    <section style={styles.localeToggle} >
+                      <LocaleToggle />
                     </section>
                   </div>
                 )
@@ -170,7 +180,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                   </FormattedMessage>
                   <div style={styles.underscoreDiv} />
                 </WelcomeDiv>
-                <div style={{ width: '100%', height: '100%' }}>
+                <div style={{ width: '100%', height: '100%', padding: `${isMobile ? '0' : '0 18%'}` }}>
                   <PackageMenuWrapper>
                     <FormattedMessage {...messages.manageProfileLabel}>
                       {
@@ -191,9 +201,48 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                       }
                     </FormattedMessage>
                   </PackageMenuWrapper>
-                </div>
-                <div style={styles.localeToggle}>
-                  <LocaleToggle />
+                  <PackageMenuWrapper height="100%" >
+                    <div style={styles.msgDiv}>
+                      <h3>Select an image to upload</h3>
+                    </div>
+                    <img
+                      alt="Analise"
+                      src="http://img1.ak.crunchyroll.com/i/spire4/a8c6638ecde1ae6b66a0b3f994836db21491147238_full.jpg"
+                      style={{
+                        backgroundClip: 'padding-box',
+                        padding: '16px',
+                        margin: '24px 0 0 0',
+                        width: '100%',
+                      }}
+                    />
+                    <input
+                      type="file"
+                      name="pic"
+                      accept="image/*"
+                      style={{
+                        position: 'relative',
+                        bottom: '-53px',
+                        left: '-130px',
+                        height: '55px',
+                        width: '46%',
+                        opacity: '0',
+                        zIndex: '900',
+                      }}
+                      //onChange={getAvatar.bind(this)}
+                    />
+                    <div style={{ display: 'flex', margin: '0 0 32px 0', width: '100%' }} >
+                      <div style={{ flexGrow: '1' }}>
+                        <Button onClick={() => console.log('upload')} width="85%" >
+                          Browse
+                        </Button>
+                      </div>
+                      <div style={{ flexGrow: '1' }}>
+                        <Button onClick={() => uploadImage()} width="85%" >
+                          Upload
+                        </Button>
+                      </div>
+                    </div>
+                  </PackageMenuWrapper>
                 </div>
               </Body>
             </div>
@@ -215,6 +264,7 @@ HomePage.propTypes = {
   stopLoading: PropTypes.func,
   screenDimen: PropTypes.object,
   updateCurrentSection: PropTypes.func,
+  uploadImage: PropTypes.func,
   updateAvatar: PropTypes.func,
 };
 
@@ -230,6 +280,9 @@ export function mapDispatchToProps(dispatch) {
   return {
     stopLoading: () => {
       dispatch(stopLoading());
+    },
+    uploadImage: () => {
+      dispatch(startLoading());
     },
     updateAvatar: (url, data) => {
       dispatch(updateAvatar(url, data));

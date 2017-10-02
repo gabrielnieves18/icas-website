@@ -9,7 +9,7 @@ const Body = styled.div`
   @media all {
     background: white;
     border: 1px solid rgb(210, 210, 210);
-    height: 260px;
+    height: ${(props) => props.height ? props.height : '260px'};
     display: flex;
     flex-grow: 1;
     flex-wrap: wrap;
@@ -32,11 +32,11 @@ const Body = styled.div`
   }
 
   @media (min-width: 1024px) {
-    margin: 32px 28%;
+    margin: 32px 18%;
   }
 
   @media (min-width: 1448px) {
-    margin: 32px 35%;
+    margin: 32px 25%;
   }
 `;
 
