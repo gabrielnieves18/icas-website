@@ -28,6 +28,8 @@ import {
   USER_TYPES,
 } from './constants';
 
+import { SUCCESS_LOGIN } from '../Login/constants';
+
 // The initial state of the App
 const initialState = fromJS({
   currentUser: false,
@@ -48,8 +50,10 @@ const initialState = fromJS({
     }),
     email: '',
     password: '',
-    firstName: '',
-    lastName: '',
+    firstName: 'John',
+    lastName: 'Doe',
+    username: 'dragon slayer',
+    url: null,
     type: USER_TYPES.DEFAULT,
   }),
 });
@@ -94,8 +98,15 @@ function appReducer(state = initialState, action) {
           modified: action.data.lastModifiedDate,
           name: action.data.name,
           size: action.data.size,
-          type: action.data.type
+          type: action.data.type,
         });
+    case SUCCESS_LOGIN:
+      return state
+        .setIn(['user', '_id'], action.user.id)
+        .setIn(['user', 'firstName'], action.user.first_name)
+        .setIn(['user', 'lastName'], action.user.last_name)
+        .setIn(['user', 'userName'], action.user.username)
+        .setIn(['user', 'url'], action.user.url);
     default:
       return state;
   }

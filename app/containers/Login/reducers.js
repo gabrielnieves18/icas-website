@@ -114,7 +114,6 @@ function loginPageReducer(state = initialState, action) {
     case SUCCESS_LOGIN:
       return state
         .set('userLogged', true);
-        // .setIn(['user'], fromJS(action.user));
     default:
       return state;
   }

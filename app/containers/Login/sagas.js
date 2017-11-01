@@ -8,7 +8,7 @@ import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER } from './constants';
 import {
-  logginSuccess,
+  loginSuccess,
   logginErrorEmail,
   registerSuccess,
   registerErrorFirstName,
@@ -46,34 +46,24 @@ export function* getUser() {
       Accept: 'application/json',
       Authorization: `Basic ${btoa(basicAuth)}`,
       'Content-Type': 'application/json',
-      Origin: 'http://localhost:3000',
-      Host: 'creativecaco.com',
     },
   };
-
-  console.log('username', username, 'password', password);
-  console.log('url', requestURL, 'head', options);
 
   try {
     // Call our request helper (see 'utils/request')
     // get the user whose credentials match
-    const serverUser = yield call(request, API_GET_USERS_BASE, options);
+    const serverPayload = yield call(request, requestURL, options);
+    const user = serverPayload.results;
 
-    console.log('serverUser:', serverUser);
-
-    // Send the compressed image file to server with XMLHttpRequest.
-    // axios.post('/path/to/upload', formData).then(() => {
-    //   console.log('Upload success!');
-    // });
-
-    if (serverUser && serverUser.length > 0) {
-      yield put(logginSuccess(serverUser[0]));
+    if (user && username.length > 0) {
+      yield put(loginSuccess(user[0]));
     } else {
+      window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
       yield put(logginErrorEmail(false, 0));
     }
   } catch (err) {
-    console.log('SERVERERROR:', err);
-    // yield put(logginErrorEmail(err.error, err.code));
+    window.alert(`An error occurred: ${err}`);
+    // yield put(loginErrorEmail(err.error, err.code));
   }
 }
 
