@@ -198,25 +198,12 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                         }
                       </FormattedMessage>
                     ) || (
-                      currentSection === PROFILE_SECTIONS.contact_info) && (
-                      <FormattedMessage {...messages.nextPageLabel} >
-                        {
-                          (formattedMSG) => (
-                            <ContactForm
-                              locale={this.props.locale}
-                              onSubmit={() => this.props.updateCurrentSection(PROFILE_SECTIONS.account)}
-                              submitButtonTitle={formattedMSG}
-                            />
-                          )
-                        }
-                      </FormattedMessage>
-                    ) || (
                       <FormattedMessage {...messages.nextPageLabel} >
                         {
                           (formattedMSG) => (
                             <AboutMeForm
                               locale={this.props.locale}
-                              onSubmit={() => this.props.updateCurrentSection(PROFILE_SECTIONS.contact_info)}
+                              onSubmit={() => this.props.updateCurrentSection(PROFILE_SECTIONS.account)}
                               submitButtonTitle={formattedMSG}
                             />
                           )

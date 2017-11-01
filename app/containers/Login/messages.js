@@ -48,17 +48,25 @@ export default defineMessages({
     id: 'spotin.components.Login.retype.password.label',
     defaultMessage: 'Retype password',
   },
+  retypeUsernameLabel: {
+    id: 'spotin.components.Login.retype.username.label',
+    defaultMessage: 'Retype username',
+  },
   submitLabel: {
     id: 'spotin.components.Login.submit.label',
     defaultMessage: 'Submit',
   },
   emailLabel: {
     id: 'spotin.components.Login.email.label',
-    defaultMessage: "Email",
+    defaultMessage: 'Email',
   },
   passwordLabel: {
     id: 'spotin.components.Login.password.label',
     defaultMessage: 'Password',
+  },
+  usernameLabel: {
+    id: 'spotin.components.Login.username.label',
+    defaultMessage: 'Username',
   },
   validationRequiredLabel: {
     id: 'spotin.components.Login.validation.required.label',

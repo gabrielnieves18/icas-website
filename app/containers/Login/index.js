@@ -10,7 +10,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
-import { makeSelectLocale } from '../LanguageProvider/selectors';
+import {
+  makeSelectLocale,
+} from '../LanguageProvider/selectors';
 
 import AlertDiv from './AlertDiv';
 import ActiveSpan from './ActiveSpan'
@@ -161,14 +163,14 @@ class LoginPage extends React.PureComponent { // eslint-disable-line react/prefe
                       <FormattedMessage {...messages.authPrompLabel1} />
                       <br />
                       <FormattedMessage {...messages.authPrompLabel2} />
-                        <div>
-                          <Button style={{ padding: '18px 24px 12px 24px' }} onClick={() => window.alert('Auth with Facebook')}>
-                            <FacebookLogo height={40} width={40} />
-                          </Button>
-                          <Button style={{ padding: '18px 24px 12px 24px' }} onClick={() => window.alert('Auth with Google')}>
-                            <GoogleLogo height={40} width={40} />
-                          </Button>
-                        </div>
+                      <div>
+                        <Button style={{ padding: '18px 24px 12px 24px' }} onClick={() => window.alert('Auth with Facebook')}>
+                          <FacebookLogo height={40} width={40} />
+                        </Button>
+                        <Button style={{ padding: '18px 24px 12px 24px' }} onClick={() => window.alert('Auth with Google')}>
+                          <GoogleLogo height={40} width={40} />
+                        </Button>
+                      </div>
                     </div>
                   </OAUTHSpanWrapper>
                 </div>
@@ -221,13 +223,17 @@ export function mapDispatchToProps(dispatch) {
     },
     onSubmitLoginForm: (evt) => {
       // User click the login tab
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loginUser());
-      dispatch(storeLoginAttempt(LoginPage.attempts + 1));
+      if (evt !== undefined) {
+        //evt.preventDefault();
+        dispatch(loginUser());
+        dispatch(storeLoginAttempt(LoginPage.attempts + 1));
+      }
     },
     onSubmitRegisterForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(registerUser());
+      if (evt !== undefined) {
+        //evt.preventDefault();
+        dispatch(registerUser());
+      }
     },
   };
 }

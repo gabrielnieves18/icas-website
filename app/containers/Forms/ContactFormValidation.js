@@ -33,9 +33,9 @@ export const validate = (values, props) => {
     errors.phone_number_1 = formattedMessages[messages.validationRequiredLabel.id];
   } else if (!/^\d+$/.test(values.get('phone_number_1'))) {
     errors.phone_number_1 = 'Invalid Phone number format';
-  } else if (values.get('phone_number_1').toString().length > PHONE_NUMBER_LENGTH ) {
+  } else if (values.get('phone_number_1').toString().length > PHONE_NUMBER_LENGTH) {
     errors.phone_number_1 = 'Too many Numbers';
-  } else if (values.get('phone_number_1').toString().length < PHONE_NUMBER_LENGTH ) {
+  } else if (values.get('phone_number_1').toString().length < PHONE_NUMBER_LENGTH) {
     errors.phone_number_1 = 'Phone number is too short. Is it a real number?';
   }
 
@@ -43,9 +43,9 @@ export const validate = (values, props) => {
     errors.phone_number_2 = formattedMessages[messages.validationRequiredLabel.id];
   } else if (!/^\d+$/.test(values.get('phone_number_2'))) {
     errors.phone_number_2 = 'Invalid Phone number format';
-  } else if (values.get('phone_number_2').toString().length > PHONE_NUMBER_LENGTH ) {
+  } else if (values.get('phone_number_2').toString().length > PHONE_NUMBER_LENGTH) {
     errors.phone_number_2 = 'Too many Numbers';
-  } else if (values.get('phone_number_2').toString().length < PHONE_NUMBER_LENGTH ) {
+  } else if (values.get('phone_number_2').toString().length < PHONE_NUMBER_LENGTH) {
     errors.phone_number_2 = 'Phone number is too short. Is it a real number?';
   } else if (values.get('phone_number_1') && values.get('phone_number_2')) {
     if (values.get('phone_number_1').toString() !== values.get('phone_number_2').toString()) {

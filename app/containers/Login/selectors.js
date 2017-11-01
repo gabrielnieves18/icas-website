@@ -6,6 +6,8 @@
 import { createSelector } from 'reselect';
 
 const selectLoginPage = (state) => state.get('login');
+const selectForm = (state) => state.get('form');
+
 
 const makeSelectAttempts = () => createSelector(
   selectLoginPage,
@@ -32,6 +34,16 @@ const makeSelectUserLogged = () => createSelector(
   (globalState) => globalState.get('userLogged')
 );
 
+const makeSelectLoginForm = () => createSelector(
+  selectForm,
+  (formState) => formState.get('login')
+);
+
+const makeSelectRegisterForm = createSelector(
+  selectForm,
+  (formState) => formState.get('register')
+);
+
 export {
   selectLoginPage,
   makeSelectAttempts,
@@ -39,4 +51,6 @@ export {
   makeSelectRegisterError,
   makeSelectRegister,
   makeSelectUserLogged,
+  makeSelectLoginForm,
+  makeSelectRegisterForm,
 };

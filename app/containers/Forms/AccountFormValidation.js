@@ -11,18 +11,10 @@ export const validate = (values, props) => {
   // Contains translation messages
   const formattedMessages = translationMessages[props.locale];
 
-  if (!values.get('email_2')) {
-    errors.email_2 = formattedMessages[messages.validationRequiredLabel.id];
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.get('email_2'))) {
-    errors.email_2 = formattedMessages[messages.validationInvalidEmailLabel.id];
-  } else if (values.get('email_1') && values.get('email_2')) {
-    if (values.get('email_1').toString() !== values.get('email_2').toString()) {
-      errors.email_2 = formattedMessages[messages.validationEmailMismatchLabel.id];
-    }
-  }
-
   if (!values.get('password_1')) {
     errors.password_1 = formattedMessages[messages.validationRequiredLabel.id];
+  } else if (!/^([A-Z]{2})(\w{4,8})(\W{2,6})/i.test(values.get('password_1'))) {
+    errors.password_1 = 'Wrong format';
   }
 
   if (!values.get('password_2')) {

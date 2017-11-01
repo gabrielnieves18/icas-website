@@ -8,9 +8,7 @@ export const SEARCH_TYPES = {
   USERS: 'users',
 };
 
-export const AUTH_TOKEN = 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU3BvdGluIiwibGFzdF9uYW1lIjoiRGVtb1VzZXIiLCJlbWFpbCI6ImdhYnJpZWwuc3BvdGluQGdtYWlsLmNvbSIsImZhY2Vib29rX2lkIjoiMTAxNjYwMzQ3MDYwNzg1IiwidXNlcl9pZCI6IjU4ZjI5MjViMmI5NWI4MDAyMTllOGRiYiIsImlhdCI6MTQ5NTIyODYzNCwiZXhwIjoxNTI2NzY0NjM0LCJhdWQiOiJhZHZlbnR1cmUgdHJhdmVsZXIiLCJpc3MiOiJzcG90aW4gc2VydmVyIiwic3ViIjoiZ2FicmllbC5zcG90aW5AZ21haWwuY29tIiwianRpIjoiY2VhNjMwNjYtZGJlOC00MDBjLWJmZGYtYjk3M2MwMzViYWQ4In0.CXz5pNIgtChiKxsK7E7gnXkzsKiYLZcPrCiuPodHFgk';
-
-export const API_GET_SPOTIN_URL = 'https://spotinapp.com/api';
+export const API_GET_SPOTIN_URL = 'https://creativecaco.com/api/wadl';
 export const API_GET_SPOTS_BASE = `${API_GET_SPOTIN_URL}/${SEARCH_TYPES.SPOTS}`;
 export const API_GET_USERS_BASE = `${API_GET_SPOTIN_URL}/${SEARCH_TYPES.USERS}`;
 export const API_GET_SPOTERS_BASE = `${API_GET_USERS_BASE}?spoter=true`;

@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import TextField from 'material-ui/TextField';
-import { black } from 'material-ui/styles/colors';
+import { white } from 'material-ui/styles/colors';
 
 
 const renderField = (props) => {
@@ -45,7 +45,7 @@ const renderField = (props) => {
       color: defaultColor,
     },
     inputStyle: {
-      color: black,
+      color: white,
     },
     warningStyle: {
       color: flatYellow,

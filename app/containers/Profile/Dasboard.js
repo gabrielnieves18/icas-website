@@ -69,28 +69,11 @@ const Dashboard = (props) => {
           </ MenuItemWrapper>
         </div>
       </MenuItem>
-      <MenuItem onClick={() => onSectionTouched(PROFILE_SECTIONS.contact_info)}>
-        <div style={currentSection.contact_info ? styles.rowLabelColor.active : styles.rowLabelColor.inactive}>
-          {
-            currentSection.contact_info ? (
-              <MenuItemSelected isMobile={isMobile}/>
-            ) : null
-          }
-          <MenuItemWrapper isMobile={isMobile}>
-            <SVGPhone style={{ height: styles.rowIcon.height, width: styles.rowIcon.width }} color={currentSection.contact_info ? styles.rowIconColor.active : styles.rowIconColor.inactive} />
-            <FormattedMessage {...messages.contactInfoLabel} >
-              {
-                (formattedMSG) => (<div style={styles.rowLabel}>{formattedMSG}</div>)
-              }
-            </FormattedMessage>
-          </MenuItemWrapper>
-        </div>
-      </MenuItem>
       <MenuItem onClick={() => onSectionTouched(PROFILE_SECTIONS.account)}>
         <div style={currentSection.account ? styles.rowLabelColor.active : styles.rowLabelColor.inactive}>
           {
             currentSection.account ? (
-              <MenuItemSelected isMobile={isMobile}/>
+              <MenuItemSelected isMobile={isMobile} />
             ) : null
           }
           <MenuItemWrapper isMobile={isMobile}>
@@ -103,15 +86,17 @@ const Dashboard = (props) => {
           </MenuItemWrapper>
         </div>
       </MenuItem>
-      <MenuItem onClick={() => {
-        // Once he leaves the profile page,
-        // trigger a saga to save the data
-        router.push(ROUTES.HOME);
-      }}>
+      <MenuItem
+        onClick={() => {
+          // Once he leaves the profile page,
+          // trigger a saga to save the data
+          router.push(ROUTES.HOME);
+        }}
+      >
         <div style={currentSection.exit ? styles.rowLabelColor.active : styles.rowLabelColor.inactive}>
           {
             currentSection.exit ? (
-              <MenuItemSelected isMobile={isMobile}/>
+              <MenuItemSelected isMobile={isMobile} />
             ) : null
           }
           <MenuItemWrapper isMobile={isMobile}>

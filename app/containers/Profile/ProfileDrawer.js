@@ -30,7 +30,7 @@ const HomeDrawer = (
   (
     <Drawer docked={!isMobile} open={open || !isMobile} openSecondary={isMobile} onRequestChange={(open) => setOpen({open})}
             containerStyle={{ backgroundImage: 'linear-gradient(-223deg, #ddf6bc 10%, #ddf6bc 19%, rgba(168, 189, 34, 0.65) 85%)' }}>
-      <DrawerHead avatar={avatar} setAvatar={updateAvatar}/>
+      <DrawerHead avatar={avatar} setAvatar={updateAvatar} />
       <FormattedMessage {...messages.dashboardLabel} >
         {
           (formattedMSG) => (<DrawerHeader headerLabel={formattedMSG} />)

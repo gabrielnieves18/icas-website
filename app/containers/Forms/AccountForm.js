@@ -16,7 +16,7 @@ import Wrapper from './Wrapper';
 
 import { validate, warn } from './AccountFormValidation';
 
-const LoginForm = (props) => {
+const AccountForm = (props) => {
   const {
     handleSubmit,
     locale,
@@ -93,7 +93,7 @@ const LoginForm = (props) => {
   );
 };
 
-LoginForm.propTypes = {
+AccountForm.propTypes = {
   ...propTypes,
   locale: PropTypes.string.isRequired,
   submitButtonTitle: PropTypes.string,
@@ -105,6 +105,6 @@ const Form = reduxForm({
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate, // <--- validation function given to redux-form
   warn, // <--- warning function given to redux-form
-})(LoginForm);
+})(AccountForm);
 
 export default Form;

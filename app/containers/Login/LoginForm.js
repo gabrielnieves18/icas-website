@@ -32,10 +32,10 @@ const LoginForm = (props) => {
     <Wrapper>
       <form style={{ flexGrow: 1 }} onSubmit={handleSubmit}>
         <div style={{ flexGrow: 1 }}>
-          <FormattedMessage {...messages.emailLabel} >
+          <FormattedMessage {...messages.usernameLabel} >
             {
               (formattedMessage) => (
-                <Field name="email" component={FormField} type="email" label={formattedMessage} placeholder="johndoe@email.com" />
+                <Field name="username" component={FormField} type="text" label={formattedMessage} placeholder="dragonslayer" />
               )
             }
           </FormattedMessage>

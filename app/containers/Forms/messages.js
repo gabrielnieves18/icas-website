@@ -10,19 +10,19 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   accountTitleLabel: {
     id: 'spotin.components.Forms.accountTitle.label',
-    defaultMessage: "Update your password",
+    defaultMessage: 'Update your password',
   },
   accountDescriptionLabel: {
     id: 'spotin.components.Profile.accountDescription.label',
-    defaultMessage: "Remember to make your password harder to guess by adding Numbers, Symbols, Capital Letters, and Lower-Case Letters and making it at least 12 characters long.",
+    defaultMessage: 'Use the following format in the order that is presented: 2 upper case letters, 4 to 8 alphanumeric characters, 2 to 6 symbols or special characters',
   },
   accountPasswordDescriptionLabel: {
     id: 'spotin.components.Profile.accountPasswordDescription.label',
-    defaultMessage: "Account Password",
+    defaultMessage: 'Account Password',
   },
   authPrompLabel1: {
     id: 'spotin.components.Login.auth.span.label1',
-    defaultMessage: "Don't waste time with passwords.",
+    defaultMessage: 'Don\'t waste time with passwords.',
   },
   authPrompLabel2: {
     id: 'spotin.components.Login.auth.span.label2',
@@ -34,7 +34,7 @@ export default defineMessages({
   },
   fullNameLabel: {
     id: 'spotin.components.Profile.fullName.label',
-    defaultMessage: "Full Name",
+    defaultMessage: 'Full Name',
   },
   lastNameLabel: {
     id: 'spotin.components.Login.lastName.label',
@@ -60,6 +60,10 @@ export default defineMessages({
     id: 'spotin.components.Login.retype.email.label',
     defaultMessage: 'Retype email',
   },
+  retypeUsernameLabel: {
+    id: 'spotin.components.Login.retype.username.label',
+    defaultMessage: 'Retype username',
+  },
   retypePasswordLabel: {
     id: 'spotin.components.Login.retype.password.label',
     defaultMessage: 'Retype password',
@@ -70,7 +74,7 @@ export default defineMessages({
   },
   emailLabel: {
     id: 'spotin.components.Login.email.label',
-    defaultMessage: "Email",
+    defaultMessage: 'Email',
   },
   passwordLabel: {
     id: 'spotin.components.Login.password.label',
@@ -78,11 +82,15 @@ export default defineMessages({
   },
   phoneNumberLabel: {
     id: 'spotin.components.Profile.phoneNumber.label',
-    defaultMessage: "Phone Number",
+    defaultMessage: 'Phone Number',
   },
   phoneNumberCommentLabel: {
     id: 'spotin.components.Profile.phoneNumberComment.label',
-    defaultMessage: "Please only use numbers. Any other character is invalid.",
+    defaultMessage: 'Please only use numbers. Any other character is invalid.',
+  },
+  usernameLabel: {
+    id: 'spotin.components.Login.username.label',
+    defaultMessage: 'Username',
   },
   validationRequiredLabel: {
     id: 'spotin.components.Login.validation.required.label',
@@ -102,6 +110,6 @@ export default defineMessages({
   },
   validationPasswordWeakLabel: {
     id: 'spotin.components.Forms.validation.weakPassword.label',
-    defaultMessage: "This is a weak password. Make it 12 character or longer to increase strength. Retype passwordOne more time.",
+    defaultMessage: 'This is a weak password. Make it 12 character or longer to increase strength.',
   },
 });

@@ -19,6 +19,10 @@ export const validate = (values, props) => {
     errors.lastName = formattedMessages[messages.validationRequiredLabel.id];
   }
 
+  if (!values.get('username')) {
+    errors.username = formattedMessages[messages.validationRequiredLabel.id];
+  }
+
   return errors;
 };
 

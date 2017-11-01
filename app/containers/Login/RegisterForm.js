@@ -45,20 +45,20 @@ const RegisterForm = (props) => {
               )
             }
           </FormattedMessage> <br />
-          <FormattedMessage {...messages.emailLabel} >
+          <FormattedMessage {...messages.usernameLabel} >
             {
               (formattedMessage) => (
-                <Field name="email_1" component={FormField} type="email" label={formattedMessage} placeholder="johndoe@email.com" />
+                <Field name="username_1" component={FormField} type="text" label={formattedMessage} placeholder="dragonslayer" />
               )
             }
           </FormattedMessage> <br />
-          <FormattedMessage {...messages.retypeEmailLabel} >
+          <FormattedMessage {...messages.retypeUsernameLabel} >
             {
               (formattedLabel) => (
                 <FormattedMessage {...messages.oneMoreTimeLabel} >
                   {
                     (formattedPlaceholder) => (
-                      <Field name="email_2" component={FormField} type="email" label={formattedLabel} placeholder={formattedPlaceholder} />
+                      <Field name="username_2" component={FormField} type="text" label={formattedLabel} placeholder={formattedPlaceholder} />
                     )
                   }
                 </FormattedMessage>
@@ -84,7 +84,9 @@ const RegisterForm = (props) => {
                 <FormattedMessage {...messages.oneMoreTimeLabel} >
                   {
                     (formattedPlaceholder) => (
-                      <Field name="password_2" component={FormField} type="password" label={formattedLabel} placeholder={formattedPlaceholder} />
+                      <div style={{ marginTop: '26px' }}>
+                        <Field name="password_2" component={FormField} type="password" label={formattedLabel} placeholder={formattedPlaceholder} />
+                      </div>
                     )
                   }
                 </FormattedMessage>
@@ -94,7 +96,7 @@ const RegisterForm = (props) => {
           <FormattedMessage {...messages.submitLabel} >
             {
               (formattedMessage) => (
-                <ButtonSubmit style={{ margin: '26px 0px 0px 0px', width: '100%' }} >{formattedMessage}</ButtonSubmit>
+                <ButtonSubmit style={{ margin: '36px 0px 0px 0px', width: '100%' }} >{formattedMessage}</ButtonSubmit>
               )
             }
           </FormattedMessage>

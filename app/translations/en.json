@@ -54,7 +54,7 @@
   "spotin.components.Profile.aboutMeTitle.label": "Let the customers know who you are",
   "spotin.components.Profile.account.label": "Account",
   "spotin.components.Profile.accountTitle.label": "Manage your account",
-  "spotin.components.Profile.accountDescription.label": "Remember to make your password harder to guess by adding Numbers, Symbols, Capital Letters, and Lower-Case Letters and making it at least 12 characters long.",
+  "spotin.components.Profile.accountDescription.label": "Use the following format in the order that is presented: 2 upper case letters, 4 to 8 alphanumeric characters, 2 to 6 symbols or special characters",
   "spotin.components.Profile.accountPasswordDescription.label": "Account Password",
   "spotin.components.Profile.contactInfo.label": "Contact Info",
   "spotin.components.Profile.contactInfoTitle.label": "How can they get in touch",
