@@ -70,14 +70,15 @@ export function* getUser() {
  */
 export function* registerUser() {
   const registerForm = yield select(makeSelectRegisterForm());
+  const registerValues = registerForm.get('values');
 
-  console.log('registerForm', registerForm);
+  console.log('registerValues', registerValues);
 
   // We use map.get() because the store map is an InmutableJS Object
-  const firstName = registerForm.get('firstName');
-  const lastName = registerForm.get('lastName');
-  const username = registerForm.get('username_1');
-  const password = registerForm.get('password_1');
+  const firstName = registerValues.get('firstName');
+  const lastName = registerValues.get('lastName');
+  const username = registerValues.get('username_1');
+  const password = registerValues.get('password_1');
   const requestURL = API_GET_USERS_BASE;
 
   const basicAuth = `${username}:${password}`;
