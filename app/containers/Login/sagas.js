@@ -33,7 +33,6 @@ export function* getUser() {
   const loginForm = yield select(makeSelectLoginForm());
   const loginValues = loginForm.get('values');
 
-  console.log(loginForm);
   // We use map.get() because the store map is an InmutableJS Object
   const username = loginValues.get('username');
   const password = loginValues.get('password');
@@ -57,9 +56,7 @@ export function* getUser() {
     const user = serverPayload.results;
 
     if (user && username.length > 0) {
-      console.log('user', user[0]);
       yield put(loginSuccess(user[0]));
-      //yield put(loginUser());
     } else {
       window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
     }
@@ -78,18 +75,18 @@ export function* getUser() {
 export function* registerUser() {
   // Select username from store
 
-  const loginForm = yield select(makeSelectLoginForm());
+  const loginForm = yield select(makeSelectRegisterForm());
   // We use map.get() because the store map is an InmutableJS Object
-  const firstName = loginForm.get('first_name');
-  const lastName = loginForm.get('first_name');
-  const username = loginForm.get('username');
-  const password = loginForm.get('password');
+  const firstName = loginForm.get('firstName');
+  const lastName = loginForm.get('lastName');
+  const username = loginForm.get('username_1');
+  const password = loginForm.get('password_1');
   const requestURL = API_GET_USERS_BASE;
 
   const basicAuth = `${username}:${password}`;
 
   const options = {
-    method: 'GET',
+    method: 'POST',
     headers: {
       Accept: 'application/json',
       Authorization: `Basic ${btoa(basicAuth)}`,
@@ -110,7 +107,8 @@ export function* registerUser() {
     const user = serverPayload.results;
 
     if (user && user.length > 0) {
-      yield put(registerSuccess(user[0]));
+      console.log(user);
+      yield put(loginSuccess(user[0]));
     } else {
       window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
     }

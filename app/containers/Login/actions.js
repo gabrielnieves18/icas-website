@@ -15,7 +15,7 @@ import {
   REGISTER_USER,
   REGISTER,
   SUCCESS_LOGIN,
-  SUCCESS_REGISTER
+  SUCCESS_REGISTER,
 } from './constants';
 
 import {
