@@ -45,7 +45,7 @@ export function storeLoginAttempt(count) {
  *
  * @return {object}
  */
-export function logginErrorEmail(error, code) {
+export function loginErrorEmail(error, code) {
   return {
     type: ERROR_LOGIN_EMAIL,
     error,
@@ -61,7 +61,7 @@ export function logginErrorEmail(error, code) {
  *
  * @return {object}
  */
-export function logginErrorPassword(error, code) {
+export function loginErrorPassword(error, code) {
   return {
     type: ERROR_LOGIN_PASSWORD,
     error,

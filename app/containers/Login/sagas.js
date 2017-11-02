@@ -9,7 +9,8 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER } from './constants';
 import {
   loginSuccess,
-  logginErrorEmail,
+  loginUser,
+  loginErrorEmail,
   registerSuccess,
   registerErrorFirstName,
 } from './actions';
@@ -56,10 +57,11 @@ export function* getUser() {
     const user = serverPayload.results;
 
     if (user && username.length > 0) {
+      console.log('user', user[0]);
       yield put(loginSuccess(user[0]));
+      //yield put(loginUser());
     } else {
       window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
-      yield put(logginErrorEmail(false, 0));
     }
   } catch (err) {
     window.alert(`An error occurred: ${err}`);
@@ -104,14 +106,13 @@ export function* registerUser() {
   try {
     // Call our request helper (see 'utils/request')
     // get the user whose credentials match
-    const serverUser = yield call(request, requestURL, options);
+    const serverPayload = yield call(request, requestURL, options);
+    const user = serverPayload.results;
 
-    console.log(serverUser);
-
-    if (serverUser && serverUser.length > 0) {
-      yield put(registerSuccess(serverUser[0]));
+    if (user && user.length > 0) {
+      yield put(registerSuccess(user[0]));
     } else {
-      yield put(registerErrorFirstName(false, 0));
+      window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
     }
   } catch (err) {
     // yield put(registerErrorFirstName(err.error, err.code));
