@@ -9,10 +9,6 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER } from './constants';
 import {
   loginSuccess,
-  loginUser,
-  loginErrorEmail,
-  registerSuccess,
-  registerErrorFirstName,
 } from './actions';
 
 import {
@@ -75,12 +71,12 @@ export function* getUser() {
 export function* registerUser() {
   // Select username from store
 
-  const loginForm = yield select(makeSelectRegisterForm());
+  const registerForm = yield select(makeSelectRegisterForm());
   // We use map.get() because the store map is an InmutableJS Object
-  const firstName = loginForm.get('firstName');
-  const lastName = loginForm.get('lastName');
-  const username = loginForm.get('username_1');
-  const password = loginForm.get('password_1');
+  const firstName = registerForm.get('firstName');
+  const lastName = registerForm.get('lastName');
+  const username = registerForm.get('username_1');
+  const password = registerForm.get('password_1');
   const requestURL = API_GET_USERS_BASE;
 
   const basicAuth = `${username}:${password}`;
@@ -100,11 +96,15 @@ export function* registerUser() {
     },
   };
 
+  console.log(options);
+
   try {
     // Call our request helper (see 'utils/request')
     // get the user whose credentials match
     const serverPayload = yield call(request, requestURL, options);
     const user = serverPayload.results;
+
+    console.log(user);
 
     if (user && user.length > 0) {
       console.log(user);
