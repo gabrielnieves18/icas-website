@@ -39,7 +39,7 @@ const makeSelectLoginForm = () => createSelector(
   (formState) => formState.get('login')
 );
 
-const makeSelectRegisterForm = createSelector(
+const makeSelectRegisterForm = () => createSelector(
   selectForm,
   (formState) => formState.get('register')
 );
