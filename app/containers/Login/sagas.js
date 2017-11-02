@@ -69,9 +69,10 @@ export function* getUser() {
  *
  */
 export function* registerUser() {
-  // Select username from store
-
   const registerForm = yield select(makeSelectRegisterForm());
+
+  console.log('registerForm', registerForm);
+
   // We use map.get() because the store map is an InmutableJS Object
   const firstName = registerForm.get('firstName');
   const lastName = registerForm.get('lastName');
