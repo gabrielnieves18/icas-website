@@ -79,15 +79,12 @@ export function* registerUser() {
   const lastName = registerValues.get('lastName');
   const username = registerValues.get('username_1');
   const password = registerValues.get('password_1');
-  const requestURL = API_GET_USERS_BASE;
-
-  const basicAuth = `${username}:${password}`;
+  const requestURL = `${API_GET_USERS_BASE}/`;
 
   const options = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      Authorization: `Basic ${btoa(basicAuth)}`,
       'Content-Type': 'application/json',
     },
     body: {
@@ -115,6 +112,7 @@ export function* registerUser() {
       window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
     }
   } catch (err) {
+    window.alert(`An error occurred: ${err}`);
     // yield put(registerErrorFirstName(err.error, err.code));
   }
 }
