@@ -96,7 +96,7 @@ export function* registerUser() {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: payload,
+    body: JSON.stringify(payload),
   };
 
   console.log(options);
