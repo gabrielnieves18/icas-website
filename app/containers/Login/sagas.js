@@ -104,7 +104,7 @@ export function* registerUser() {
     const serverPayload = yield call(request, requestURL, options);
     const user = {};
 
-    serverPayload.map((key) => user.append(key, serverPayload[key]));
+    Object.keys(serverPayload).map((key) => user.append(key, serverPayload[key]));
 
     console.log('user: ', user);
 
