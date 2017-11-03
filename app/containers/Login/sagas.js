@@ -102,9 +102,9 @@ export function* registerUser() {
     // Call our request helper (see 'utils/request')
     // get the user whose credentials match
     const serverPayload = yield call(request, requestURL, options);
-    const user = serverPayload.results;
+    const user = serverPayload;
 
-    console.log(user);
+    console.log('user: ', user);
 
     if (user && user.length > 0) {
       console.log(user);
