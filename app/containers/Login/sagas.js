@@ -81,18 +81,22 @@ export function* registerUser() {
   const password = registerValues.get('password_1');
   const requestURL = `${API_GET_USERS_BASE}/`;
 
+  const payload = new FormData();
+  payload.append('json', JSON.stringify({
+    first_name: firstName,
+    last_name: lastName,
+    username,
+    password,
+  }));
+
+
   const options = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: {
-      first_name: firstName,
-      last_name: lastName,
-      username,
-      password,
-    },
+    body: payload,
   };
 
   console.log(options);
