@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOGIN_USER, REGISTER_USER } from './constants';
 import {
   loginSuccess,
+  registerSuccess,
 } from './actions';
 
 import {
@@ -102,15 +103,19 @@ export function* registerUser() {
     // Call our request helper (see 'utils/request')
     // get the user whose credentials match
     const serverPayload = yield call(request, requestURL, options);
-    const user = {};
-
-    Object.keys(serverPayload).map((key) => user.append(key, serverPayload[key]));
+    const user = {
+      id: serverPayload['id'],
+      first_name: serverPayload['first_name'],
+      last_name: serverPayload['last_name'],
+      username: serverPayload['username'],
+      url: serverPayload['url'],
+    };
 
     console.log('user: ', user);
 
     if (user.id) {
       console.log(user);
-      yield put(loginSuccess(user[0]));
+      yield put(loginSuccess(user));
     } else {
       window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
     }
