@@ -106,7 +106,7 @@ export function* registerUser() {
 
     console.log('user: ', user);
 
-    if (user && user.length > 0) {
+    if (user.id) {
       console.log(user);
       yield put(loginSuccess(user[0]));
     } else {
