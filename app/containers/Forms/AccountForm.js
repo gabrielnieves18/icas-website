@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import { propTypes } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
@@ -37,7 +36,7 @@ const AccountForm = (props) => {
       margin: '0',
       textAlign: 'justify',
       fontFamily: 'Helvetica Neue',
-      fontWeight: '400'
+      fontWeight: '400',
     },
     button: {
       margin: '64px 0px 24px 0px',
