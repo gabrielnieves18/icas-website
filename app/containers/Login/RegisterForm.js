@@ -9,7 +9,7 @@ import { propTypes } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 import { Field, reduxForm } from 'redux-form/immutable';
 
-import FormField from '../Forms/AboutMeFormField';
+import FormField from '../Forms/LoginFormField';
 import { validate, warn } from './RegisterFormValidation';
 
 import ButtonSubmit from './ButtonSubmit';
