@@ -131,7 +131,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
       },
     };
 
-    console.log('user', user);
+    console.log('Profile user', user);
 
     return (
       <Wrapper>
@@ -176,9 +176,6 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                       (
                         currentSection === PROFILE_SECTIONS.about_me) && (
                         <FormattedMessage {...messages.aboutMeTitleLabel} />
-                      ) || (
-                         currentSection === PROFILE_SECTIONS.contact_info) && (
-                        <FormattedMessage {...messages.contactInfoTitleLabel} />
                       ) || (
                         <FormattedMessage {...messages.accountTitleLabel} />
                       )
