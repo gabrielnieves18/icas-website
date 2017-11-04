@@ -29,7 +29,7 @@ export default function configureStore(initialState = {}, history) {
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers =
-    process.env.NODE_ENV !== 'production' &&
+    // process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
@@ -40,8 +40,6 @@ export default function configureStore(initialState = {}, history) {
     createReducer(),
     fromJS(initialState),
     composeEnhancers(...enhancers),
-    // Delete this shit before pushing to production
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
   /* eslint-enable */
 
