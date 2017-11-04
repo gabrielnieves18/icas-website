@@ -39,7 +39,9 @@ export default function configureStore(initialState = {}, history) {
   const store = createStore(
     createReducer(),
     fromJS(initialState),
-    composeEnhancers(...enhancers)
+    composeEnhancers(...enhancers),
+    // Delete this shit before pushing to production
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
   /* eslint-enable */
 
