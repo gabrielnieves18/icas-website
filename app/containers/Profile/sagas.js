@@ -59,11 +59,11 @@ export function* requestData() {
   // Watches for SEARCH_QUERY_UPDATED actions and calls loadData when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
-  const perPageQuantityWatcher = yield takeLatest(DISPLAY_QUANTITY_UPDATED, loadData);
+  //const perPageQuantityWatcher = yield takeLatest(DISPLAY_QUANTITY_UPDATED, loadData);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
-  yield cancel(perPageQuantityWatcher);
+  //yield cancel(perPageQuantityWatcher);
 }
 
 // Bootstrap sagas

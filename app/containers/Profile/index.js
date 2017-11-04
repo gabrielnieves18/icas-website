@@ -77,7 +77,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
       isMobile,
       router,
       screenDimen,
-      user
+      user,
     } = this.props;
 
     const styles = {
