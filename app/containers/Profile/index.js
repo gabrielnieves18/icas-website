@@ -19,6 +19,7 @@ import {
   makeSelectIsMobile,
   makeSelectScreenDimentions,
   makeSelectLoading,
+  makeSelectUser,
 } from '../App/selectors';
 
 import {
@@ -76,6 +77,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
       isMobile,
       router,
       screenDimen,
+      user
     } = this.props;
 
     const styles = {
@@ -205,6 +207,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                               locale={this.props.locale}
                               onSubmit={() => this.props.updateCurrentSection(PROFILE_SECTIONS.account)}
                               submitButtonTitle={formattedMSG}
+                              user={user}
                             />
                           )
                         }
@@ -233,6 +236,7 @@ Profile.propTypes = {
   updateAvatar: PropTypes.func,
   updateCurrentSection: PropTypes.func,
   screenDimen: PropTypes.object,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -242,6 +246,7 @@ const mapStateToProps = createStructuredSelector({
   locale: makeSelectLocale(),
   isMobile: makeSelectIsMobile(),
   screenDimen: makeSelectScreenDimentions(),
+  user: makeSelectUser(),
 });
 
 export function mapDispatchToProps(dispatch) {

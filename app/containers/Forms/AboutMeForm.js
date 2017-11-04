@@ -22,6 +22,7 @@ const LoginForm = (props) => {
     locale,
     pristine,
     submitButtonTitle = "Next Page",
+    user = null,
     valid,
   } = props;
 
@@ -30,9 +31,13 @@ const LoginForm = (props) => {
       padding: '0',
       margin: '0',
       textAlign: 'justify',
-      fontFamily: 'Helvetica Neue'
+      fontFamily: 'Helvetica Neue',
     },
   };
+
+  let firstName = user && user.firstName ? user.firstName : null;
+  let lastName = user && user.lastName ? user.lastName : null;
+  let username = user && user.username ? user.username : null;
 
   return (
     <Wrapper>
@@ -44,17 +49,37 @@ const LoginForm = (props) => {
           <FormattedMessage {...messages.firstNameLabel} >
             {
               (formattedMessage) => (
-                <Field name="firstName" component={FormField} type="text" label={formattedMessage} placeholder="John" />
+                <Field
+                  name="firstName"
+                  component={FormField} type="text"
+                  label={formattedMessage} placeholder="John"
+                  value={firstName}
+                />
               )
             }
           </FormattedMessage>
           <FormattedMessage {...messages.lastNameLabel} >
             {
               (formattedMessage) => (
-                <Field name="lastName" component={FormField} type="text" label={formattedMessage} placeholder="Doe" />
+                <Field
+                  name="lastName"
+                  component={FormField} type="text"
+                  label={formattedMessage} placeholder="Doe"
+                  value={lastName}
+                />
               )
             }
           </FormattedMessage>
+
+          <Field
+            name="lastName"
+            component={FormField}
+            type="text"
+            label={'Username'}
+            placeholder="Dragoon"
+            value={username}
+          />
+
           <div style={{ flexGrow: '1', textAlign: 'start' }}>
             <ButtonSubmit style={{ margin: '64px 0px 24px 0px', width: '250px' }} >
               <span>{submitButtonTitle}</span>
@@ -70,6 +95,7 @@ LoginForm.propTypes = {
   ...propTypes,
   locale: PropTypes.string.isRequired,
   submitButtonTitle: PropTypes.string,
+  user: PropTypes.object,
 };
 
 const Form = reduxForm({

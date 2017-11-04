@@ -15,6 +15,7 @@ const renderField = (props) => {
     meta: { touched, error, warning, valid, visited },
     placeholder,
     type,
+    value = null,
   } = props;
 
   const defaultColor = '#8798AB';
@@ -71,7 +72,8 @@ const renderField = (props) => {
             inputStyle={styles.inputStyle}
             type={type}
             underlineFocusStyle={styles.focusUnderlineStyle}
-            underlineStyle={valid ? styles.focusUnderlineStyle : styles.defaultUnderlineStyle }
+            underlineStyle={valid ? styles.focusUnderlineStyle : styles.defaultUnderlineStyle}
+            value={value}
           />
         ) : (
           // There is some weird bug that when a warning is triggered, and the TextField
@@ -93,6 +95,7 @@ const renderField = (props) => {
                 inputStyle={styles.inputStyle}
                 errorText={error}
                 type={type}
+                value={value}
               />
             ) : (
               warning && (
@@ -109,6 +112,7 @@ const renderField = (props) => {
                   type={type}
                   underlineFocusStyle={styles.warningUnderlineStyle}
                   underlineStyle={styles.warningUnderlineStyle}
+                  value={value}
                 />
               ))
             )
@@ -125,6 +129,7 @@ renderField.propTypes = {
   placeholder: PropTypes.string,
   type: PropTypes.string,
   meta: PropTypes.object,
+  value: PropTypes.string,
 };
 
 export default renderField;
