@@ -35,9 +35,11 @@ const LoginForm = (props) => {
     },
   };
 
-  let firstName = user && user.firstName ? user.firstName : null;
-  let lastName = user && user.lastName ? user.lastName : null;
-  let username = user && user.username ? user.username : null;
+  const firstName = user && user.firstName ? user.firstName : null;
+  const lastName = user && user.lastName ? user.lastName : null;
+  const username = user && user.username ? user.username : null;
+
+  console.log('Value User', user);
 
   return (
     <Wrapper>

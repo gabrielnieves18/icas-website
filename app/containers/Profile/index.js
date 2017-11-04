@@ -131,6 +131,8 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
       },
     };
 
+    console.log('user', user);
+
     return (
       <Wrapper>
         <Helmet
