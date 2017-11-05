@@ -35,9 +35,9 @@ const LoginForm = (props) => {
     },
   };
 
-  const firstName = user && user.firstName ? user.firstName : null;
-  const lastName = user && user.lastName ? user.lastName : null;
-  const username = user && user.username ? user.username : null;
+  const firstName = user ? user.get('firstName') : null;
+  const lastName = user ? user.get('lastName') : null;
+  const username = user ? user.get('username') : null;
 
   console.log('Value User', user);
 
