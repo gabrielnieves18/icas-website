@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import { black } from 'material-ui/styles/colors';
 
-
 const renderField = (props) => {
   const {
     input,
@@ -55,6 +54,8 @@ const renderField = (props) => {
       borderColor: flatYellow,
     },
   };
+
+  console.log(`${label} =  ${value}`);
 
   return (
     <div style={{ color: 'black', height: '68px', textAlign: 'justify' }} >
