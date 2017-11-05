@@ -14,7 +14,6 @@ const renderField = (props) => {
     meta: { touched, error, warning, valid, visited },
     placeholder,
     type,
-    value,
   } = props;
 
   const defaultColor = '#8798AB';
@@ -55,7 +54,7 @@ const renderField = (props) => {
     },
   };
 
-  console.log(`${label} =  ${value}`);
+  console.log(`${label} =  ${input.value}`);
   console.log('Inputs = ', input);
 
   return (
@@ -128,7 +127,6 @@ renderField.propTypes = {
   placeholder: PropTypes.string,
   type: PropTypes.string,
   meta: PropTypes.object,
-  value: PropTypes.string,
 };
 
 export default renderField;
