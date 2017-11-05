@@ -61,7 +61,7 @@ const LoginForm = (props) => {
                   type="text"
                   label={formattedMessage}
                   placeholder="John"
-                  value={firstName}
+                  value="Hellooooo"
                 />
               )
             }
