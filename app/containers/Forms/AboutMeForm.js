@@ -56,8 +56,10 @@ const LoginForm = (props) => {
               (formattedMessage) => (
                 <Field
                   name="firstName"
-                  component={FormField} type="text"
-                  label={formattedMessage} placeholder="John"
+                  component={FormField}
+                  type="text"
+                  label={formattedMessage}
+                  placeholder="John"
                   value={firstName}
                 />
               )
@@ -68,8 +70,10 @@ const LoginForm = (props) => {
               (formattedMessage) => (
                 <Field
                   name="lastName"
-                  component={FormField} type="text"
-                  label={formattedMessage} placeholder="Doe"
+                  component={FormField}
+                  type="text"
+                  label={formattedMessage}
+                  placeholder="Doe"
                   value={lastName}
                 />
               )
@@ -77,7 +81,7 @@ const LoginForm = (props) => {
           </FormattedMessage>
 
           <Field
-            name="lastName"
+            name="username"
             component={FormField}
             type="text"
             label={'Username'}

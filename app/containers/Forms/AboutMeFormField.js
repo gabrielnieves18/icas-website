@@ -56,6 +56,7 @@ const renderField = (props) => {
   };
 
   console.log(`${label} =  ${value}`);
+  console.log('Inputs = ', input);
 
   return (
     <div style={{ color: 'black', height: '68px', textAlign: 'justify' }} >
