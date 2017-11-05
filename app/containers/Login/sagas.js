@@ -6,6 +6,8 @@
  */
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
+import { initialize } from 'redux-form'
+
 import { LOGIN_USER, REGISTER_USER } from './constants';
 import {
   loginSuccess,
@@ -20,6 +22,16 @@ import {
 import request from './../../utils/request';
 
 import { API_GET_USERS_BASE } from '../../constants-api';
+
+const initProfileForm = (user) => initialize(
+  'profile',
+  {
+    firstName: user.firstName,
+    lastName: user.lastName,
+    username: user.username,
+  },
+  ['firstName', 'lastName', 'username']
+);
 
 /**
  * Spotin Login request/response handler
@@ -53,6 +65,8 @@ export function* getUser() {
     const user = serverPayload.results;
 
     if (user && username.length > 0) {
+      // import { initialize } from 'redux-form'
+      yield put(initProfileForm(user[0]));
       yield put(loginSuccess(user[0]));
     } else {
       window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
@@ -97,8 +111,6 @@ export function* registerUser() {
     }),
   };
 
-  console.log(options);
-
   try {
     // Call our request helper (see 'utils/request')
     // get the user whose credentials match
@@ -111,10 +123,8 @@ export function* registerUser() {
       url: serverPayload['url'],
     };
 
-    console.log('user: ', user);
-
     if (user.id) {
-      console.log(user);
+      yield put(initProfileForm(user));
       yield put(loginSuccess(user));
     } else {
       window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');

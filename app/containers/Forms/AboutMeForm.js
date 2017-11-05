@@ -39,11 +39,6 @@ const LoginForm = (props) => {
   const lastName = user ? user.get('lastName') : null;
   const username = user ? user.get('username') : null;
 
-  console.log('Value User', user.toJS());
-  console.log('First Name', firstName);
-  console.log('Last Name', lastName);
-  console.log('Username', username);
-
   return (
     <Wrapper>
       <form style={{ flexGrow: 1 }} onSubmit={handleSubmit}>
@@ -55,13 +50,11 @@ const LoginForm = (props) => {
             {
               (formattedMessage) => (
                 <Field
-                  defautValue={firstName}
                   name="firstName"
                   component={FormField}
                   type="text"
                   label={formattedMessage}
                   placeholder="John"
-                  value="Hellooooo"
                 />
               )
             }
@@ -75,7 +68,6 @@ const LoginForm = (props) => {
                   type="text"
                   label={formattedMessage}
                   placeholder="Doe"
-                  value={lastName}
                 />
               )
             }
@@ -87,7 +79,6 @@ const LoginForm = (props) => {
             type="text"
             label={'Username'}
             placeholder="Dragoon"
-            value={username}
           />
 
           <div style={{ flexGrow: '1', textAlign: 'start' }}>
@@ -105,7 +96,6 @@ LoginForm.propTypes = {
   ...propTypes,
   locale: PropTypes.string.isRequired,
   submitButtonTitle: PropTypes.string,
-  user: PropTypes.object,
 };
 
 const Form = reduxForm({
