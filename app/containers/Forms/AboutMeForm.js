@@ -39,7 +39,7 @@ const LoginForm = (props) => {
   const lastName = user ? user.get('lastName') : null;
   const username = user ? user.get('username') : null;
 
-  console.log('Value User', user.toJson());
+  console.log('Value User', user.toJS());
   console.log('First Name', firstName);
   console.log('Last Name', lastName);
   console.log('Username', username);
