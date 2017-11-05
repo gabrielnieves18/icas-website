@@ -105,7 +105,7 @@ function appReducer(state = initialState, action) {
         .setIn(['user', '_id'], action.user.id)
         .setIn(['user', 'firstName'], action.user.first_name)
         .setIn(['user', 'lastName'], action.user.last_name)
-        .setIn(['user', 'userName'], action.user.username)
+        .setIn(['user', 'username'], action.user.username)
         .setIn(['user', 'url'], action.user.url);
     default:
       return state;
