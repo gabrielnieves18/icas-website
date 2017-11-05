@@ -55,6 +55,7 @@ const LoginForm = (props) => {
             {
               (formattedMessage) => (
                 <Field
+                  defautValue={firstName}
                   name="firstName"
                   component={FormField}
                   type="text"
