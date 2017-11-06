@@ -156,12 +156,12 @@ export function* updateUser() {
   console.log('user', currentUser);
   console.log('profileValues', profileValues);
 
-  const firstNameValidation = profileValidations ? !profileValidations.get('firstName') : false;
-  const lastNameValidation = profileValidations ? !profileValidations.get('lastName') : false;
-  const usernameValidation = profileValidations ? !profileValidations.get('username') : false;
-  const passwordValidation = profileValidations ? (
+  const firstNameValidation = !profileValidations.get('firstName');
+  const lastNameValidation = !profileValidations.get('lastName');
+  const usernameValidation = !profileValidations.get('username');
+  const passwordValidation = (
     !profileValidations.get('password_1') && !profileValidations.get('password_2')
-  ) : false;
+  );
 
   // We use map.get() because the store map is an InmutableJS Object
   const requestURL = currentUser.get('url');
