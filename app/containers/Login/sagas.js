@@ -153,7 +153,7 @@ export function* updateUser() {
   const profileValues = registerForm.get('values');
   const profileValidations = registerForm.get('syncErrors');
 
-  console.log('user', user);
+  console.log('user', currentUser);
   console.log('profileValues', profileValues);
 
   const firstNameValidation = profileValidations ? !profileValidations.get('firstName') : false;
