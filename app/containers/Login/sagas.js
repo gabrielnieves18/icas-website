@@ -245,7 +245,7 @@ export function* loginData() {
   yield take(LOCATION_CHANGE);
   yield cancel(loginUserWatcher);
   yield cancel(registerUserWatcher);
-  yield cancel(registerUpdateProfileWatcher);
+  // yield cancel(registerUpdateProfileWatcher);
 }
 
 // Bootstrap sagas
