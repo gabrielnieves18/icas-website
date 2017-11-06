@@ -27,6 +27,7 @@ const Dashboard = (props) => {
     onSectionTouched,
     router,
     style,
+    updateUserProfile,
   } = props;
 
   const styles = {
@@ -90,6 +91,7 @@ const Dashboard = (props) => {
         onClick={() => {
           // Once he leaves the profile page,
           // trigger a saga to save the data
+          updateUserProfile();
           router.push(ROUTES.HOME);
         }}
       >
@@ -119,6 +121,7 @@ Dashboard.propTypes = {
   style: PropTypes.object,
   isMobile: PropTypes.bool,
   onSectionTouched: PropTypes.func.isRequired,
+  updateUserProfile: PropTypes.func,
 };
 
 export default withRouter(Dashboard);

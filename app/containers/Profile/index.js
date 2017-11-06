@@ -170,6 +170,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                 smallScreen={screenDimen.get('height') < 750}
                 updateAvatar={this.props.updateAvatar}
                 updateCurrentSection={this.props.updateCurrentSection}
+                updateUserProfile={updateUserProfile}
               />
               <Body>
                 <TitleDiv>

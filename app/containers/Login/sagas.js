@@ -164,7 +164,7 @@ export function* updateUser() {
   ) : false;
 
   // We use map.get() because the store map is an InmutableJS Object
-  const requestURL = 'http://localhost/users';  //currentUser.get('url');
+  const requestURL = currentUser.get('url');
 
   let body = {};
 
