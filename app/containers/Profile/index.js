@@ -193,7 +193,10 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                           (formattedMSG) => (
                             <AccountForm
                               locale={this.props.locale}
-                              onSubmit={() => router.push(ROUTES.HOME)}
+                              onSubmit={() => {
+                                this.props.updateUserProfile();
+                                router.push(ROUTES.HOME);
+                              }}
                               submitButtonTitle={formattedMSG}
                             />
                           )
@@ -205,10 +208,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                           (formattedMSG) => (
                             <AboutMeForm
                               locale={this.props.locale}
-                              onSubmit={() => {
-                                this.props.updateUserProfile();
-                                this.props.updateCurrentSection(PROFILE_SECTIONS.account);
-                              }}
+                              onSubmit={() => this.props.updateCurrentSection(PROFILE_SECTIONS.account)}
                               submitButtonTitle={formattedMSG}
                               user={user}
                             />
