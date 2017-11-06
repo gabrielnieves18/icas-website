@@ -26,8 +26,8 @@ import { API_GET_USERS_BASE } from '../../constants-api';
 const initProfileForm = (user) => initialize(
   'profile',
   {
-    firstName: user.firstName,
-    lastName: user.lastName,
+    firstName: user.first_name,
+    lastName: user.last_name,
     username: user.username,
   },
   ['firstName', 'lastName', 'username']
