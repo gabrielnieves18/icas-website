@@ -196,6 +196,8 @@ export function* updateUser() {
     };
   }
 
+  console.log('Final PUT body:', body);
+
   const basicAuth = `${profileValues.get('username')}:${profileValues.get('password_1')}`;
 
   const options = {
