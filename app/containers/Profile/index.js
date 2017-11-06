@@ -79,7 +79,6 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
       router,
       screenDimen,
       user,
-      updateUserProfile,
     } = this.props;
 
     const styles = {
@@ -196,7 +195,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                             <AccountForm
                               locale={this.props.locale}
                               onSubmit={() => {
-                                updateUserProfile();
+                                this.props.updateUserProfile();
                                 router.push(ROUTES.HOME);
                               }}
                               submitButtonTitle={formattedMSG}
@@ -211,7 +210,6 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                             <AboutMeForm
                               locale={this.props.locale}
                               onSubmit={() => {
-                                updateUserProfile();
                                 this.props.updateCurrentSection(PROFILE_SECTIONS.account);
                               }}
                               submitButtonTitle={formattedMSG}
