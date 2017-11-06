@@ -29,7 +29,7 @@ const AccountForm = (props) => {
       padding: '0',
       margin: '0',
       textAlign: 'justify',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: 'Helvetica Neue'
     },
     description: {
       padding: '0',

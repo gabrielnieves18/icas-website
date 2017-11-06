@@ -4,6 +4,7 @@
 
 export const CURRENT_SECTION = 'app/HomePage/CURRENT_SECTION';
 export const OBJECT_SELECTED = 'app/HomePage/OBJECT_SELECTED';
+export const UPDATE_IMAGE = 'app/HomePage/UPDATE_IMAGE';
 
 export const HOME_SECTIONS = {
   home: 0,

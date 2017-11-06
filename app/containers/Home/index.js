@@ -23,10 +23,12 @@ import {
 import {
   makeSelectCurrentSection,
   makeSelectCurrentObjectData,
+  makeSelectCurrentImage,
 } from './selectors';
 
 import {
   updateCurrentSection,
+  updateImage,
 } from './actions';
 
 import {
@@ -59,11 +61,28 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
     };
 
     this.setState = this.setState.bind(this);
+    this.getAvatar = this.getAvatar.bind(this);
   }
 
   componentDidMount() {
     this.props.stopLoading();
   }
+
+  getAvatar = (evt) => {
+    const files = evt.target.files;
+    const reader = new FileReader();
+    let avt = null;
+
+    reader.onloadend = () => {
+      avt = reader.result;
+      this.props.updateImage(reader.result, Object(files[0]));
+    };
+
+    if (files.length > 0) {
+      // Set new avatar
+      avt = reader.readAsDataURL(files[0]);
+    }
+  };
 
   handleToggle = () => this.setState({open: !this.state.open});
 
@@ -207,7 +226,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                     </div>
                     <img
                       alt="Analise"
-                      src="http://img1.ak.crunchyroll.com/i/spire4/a8c6638ecde1ae6b66a0b3f994836db21491147238_full.jpg"
+                      src={this.props.currentImage.get('url')}
                       style={{
                         backgroundClip: 'padding-box',
                         padding: '16px',
@@ -228,7 +247,7 @@ class HomePage extends React.PureComponent { // eslint-disable-line react/prefer
                         opacity: '0',
                         zIndex: '900',
                       }}
-                      //onChange={getAvatar.bind(this)}
+                      onChange={this.getAvatar}
                     />
                     <div style={{ display: 'flex', margin: '0 0 32px 0', width: '100%' }} >
                       <div style={{ flexGrow: '1' }}>
@@ -258,6 +277,7 @@ HomePage.propTypes = {
   appLoading: PropTypes.bool,
   currentObjectSelected: PropTypes.bool,
   currentSection: PropTypes.number,
+  currentImage: PropTypes.object,
   initLoadData: PropTypes.func,
   isMobile: PropTypes.bool,
   router: PropTypes.object,
@@ -266,12 +286,14 @@ HomePage.propTypes = {
   updateCurrentSection: PropTypes.func,
   uploadImage: PropTypes.func,
   updateAvatar: PropTypes.func,
+  updateImage: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   avatar: makeSelectAvatar(),
   appLoading: makeSelectLoading(),
   currentSection: makeSelectCurrentSection(),
+  currentImage: makeSelectCurrentImage(),
   isMobile: makeSelectIsMobile(),
   screenDimen: makeSelectScreenDimentions(),
 });
@@ -289,6 +311,9 @@ export function mapDispatchToProps(dispatch) {
     },
     updateCurrentSection: (section) => {
       dispatch(updateCurrentSection(section));
+    },
+    updateImage: (url, data) => {
+      dispatch(updateImage(url, data));
     },
   };
 }

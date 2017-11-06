@@ -33,9 +33,17 @@ const makeSelectPaginationCount = () => createSelector(
   (homePageState) => homePageState.get('paginationCount')
 );
 
+
+const makeSelectCurrentImage = () => createSelector(
+  selectSearchQuery,
+  (homePageState) => homePageState.get('currentImage')
+);
+
+
 export {
   selectSearchQuery,
   makeSelectCurrentSection,
+  makeSelectCurrentImage,
   makeSelectCurrentObjectData,
   makeSelectCurrentObjectSelected,
   makeSelectCurrentPageIndex,

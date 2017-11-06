@@ -20,7 +20,6 @@ import { PROFILE_SECTIONS } from './constants';
 import { ROUTES } from '../../constants';
 
 const Dashboard = (props) => {
-
   const {
     currentRow,
     isMobile,

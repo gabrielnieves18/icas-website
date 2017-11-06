@@ -4,6 +4,7 @@
 import {
   CURRENT_SECTION,
   OBJECT_SELECTED,
+  UPDATE_IMAGE,
 } from './constants';
 
 /**
@@ -31,5 +32,18 @@ export function updateCurrentSection(section) {
   return {
     type: CURRENT_SECTION,
     section,
+  };
+}
+
+/**
+ *
+ * To-DO
+ *
+ */
+export function updateImage(url, data) {
+  return {
+    type: UPDATE_IMAGE,
+    url,
+    data,
   };
 }
