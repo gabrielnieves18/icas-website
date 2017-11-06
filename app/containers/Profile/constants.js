@@ -6,6 +6,7 @@ export const CURRENT_SECTION = 'app/Profile/CURRENT_SECTION';
 export const OBJECT_SELECTED = 'app/Profile/OBJECT_SELECTED';
 export const PREVIOUS_PAGE = 'app/Profile/PREVIOUS_PAGE';
 export const NEXT_PAGE = 'app/Profile/NEXT_PAGE';
+export const UPDATE_PROFILE = 'app/Profile/UPDATE_PROFILE';
 
 export const PROFILE_SECTIONS = {
   about_me: 0,

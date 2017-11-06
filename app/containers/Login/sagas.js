@@ -6,7 +6,7 @@
  */
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { initialize } from 'redux-form'
+import { initialize } from 'redux-form';
 
 import { LOGIN_USER, REGISTER_USER } from './constants';
 import {
@@ -18,6 +18,13 @@ import {
   makeSelectRegisterForm,
   makeSelectLoginForm,
 } from './selectors';
+
+import { makeSelectUser } from '../App/selectors';
+
+
+import { makeSelectProfileForm } from '../Profile/selectors';
+
+import { UPDATE_PROFILE } from '../Profile/constants';
 
 import request from './../../utils/request';
 
@@ -136,6 +143,94 @@ export function* registerUser() {
 }
 
 /**
+ *
+ * To-Do
+ *
+ */
+export function* updateUser() {
+  const registerForm = yield select(makeSelectProfileForm());
+  const currentUser = yield select(makeSelectUser());
+  const profileValues = registerForm.get('values');
+  const profileValidations = registerForm.get('syncErrors');
+
+  console.log('user', user);
+  console.log('profileValues', profileValues);
+
+  const firstNameValidation = profileValidations ? !profileValidations.get('firstName') : false;
+  const lastNameValidation = profileValidations ? !profileValidations.get('lastName') : false;
+  const usernameValidation = profileValidations ? !profileValidations.get('username') : false;
+  const passwordValidation = profileValidations ? (
+    !profileValidations.get('password_1') && !profileValidations.get('password_2')
+  ) : false;
+
+  // We use map.get() because the store map is an InmutableJS Object
+  const requestURL = 'http://localhost/';  //currentUser.get('url');
+
+  let body = {};
+
+  if (firstNameValidation) {
+    body = {
+      ...body,
+      first_name: profileValues.get('firstName'),
+    };
+  }
+
+  if (lastNameValidation) {
+    body = {
+      ...body,
+      last_name: profileValues.get('lastName'),
+    };
+  }
+
+  if (usernameValidation) {
+    body = {
+      ...body,
+      username: profileValues.get('username'),
+    };
+  }
+
+  if (passwordValidation) {
+    body = {
+      ...body,
+      password: profileValues.get('password_1'),
+    };
+  }
+
+  const options = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  };
+
+  try {
+    // Call our request helper (see 'utils/request')
+    // get the user whose credentials match
+    const serverPayload = yield call(request, requestURL, options);
+    const user = {
+      id: serverPayload['id'],
+      first_name: serverPayload['first_name'],
+      last_name: serverPayload['last_name'],
+      username: serverPayload['username'],
+      url: serverPayload['url'],
+    };
+
+    if (user.id) {
+      yield put(initProfileForm(user));
+      yield put(loginSuccess(user));
+    } else {
+      window.alert('An error occurred: An error has occurred. Could not find User, sorry! :\'(');
+    }
+  } catch (err) {
+    window.alert(`An error occurred: ${err}`);
+    // yield put(registerErrorFirstName(err.error, err.code));
+  }
+}
+
+
+/**
  * Root saga manages watcher lifecycle
  */
 export function* loginData() {
@@ -144,11 +239,13 @@ export function* loginData() {
   // It returns task descriptor (just like fork) so we can continue execution
   const loginUserWatcher = yield takeLatest(LOGIN_USER, getUser);
   const registerUserWatcher = yield takeLatest(REGISTER_USER, registerUser);
+  const registerUpdateProfileWatcher = yield takeLatest(UPDATE_PROFILE, updateUser);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);
   yield cancel(loginUserWatcher);
   yield cancel(registerUserWatcher);
+  yield cancel(registerUpdateProfileWatcher);
 }
 
 // Bootstrap sagas

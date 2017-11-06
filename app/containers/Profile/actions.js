@@ -6,6 +6,7 @@ import {
   OBJECT_SELECTED,
   PREVIOUS_PAGE,
   NEXT_PAGE,
+  UPDATE_PROFILE,
 } from './constants';
 
 /**
@@ -55,5 +56,13 @@ export function updateCurrentSection(section) {
   return {
     type: CURRENT_SECTION,
     section,
+  };
+}
+
+/**
+ */
+export function updateProfile() {
+  return {
+    type: UPDATE_PROFILE,
   };
 }

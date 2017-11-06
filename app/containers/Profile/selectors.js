@@ -6,6 +6,7 @@
 import { createSelector } from 'reselect';
 
 const selectSearchQuery = (state) => state.get('profile');
+const selectForm = (state) => state.get('form');
 
 
 const makeSelectCurrentSection = () => createSelector(
@@ -43,6 +44,11 @@ const makeSelectUncompletedPackages = () => createSelector(
   (homePageState) => homePageState.get('uncompletedPackages')
 );
 
+const makeSelectProfileForm = () => createSelector(
+  selectForm,
+  (formState) => formState.get('profile')
+);
+
 export {
   selectSearchQuery,
   makeSelectCurrentSection,
@@ -51,5 +57,6 @@ export {
   makeSelectCurrentPageIndex,
   makeSelectPaginationCount,
   makeSelectOngoingPackages,
+  makeSelectProfileForm,
   makeSelectUncompletedPackages,
 };

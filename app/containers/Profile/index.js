@@ -28,6 +28,7 @@ import {
 
 import {
   updateCurrentSection,
+  updateProfile,
 } from './actions';
 
 import {
@@ -204,7 +205,10 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                           (formattedMSG) => (
                             <AboutMeForm
                               locale={this.props.locale}
-                              onSubmit={() => this.props.updateCurrentSection(PROFILE_SECTIONS.account)}
+                              onSubmit={() => {
+                                this.props.updateUserProfile();
+                                this.props.updateCurrentSection(PROFILE_SECTIONS.account);
+                              }}
                               submitButtonTitle={formattedMSG}
                               user={user}
                             />
@@ -236,6 +240,7 @@ Profile.propTypes = {
   updateCurrentSection: PropTypes.func,
   screenDimen: PropTypes.object,
   user: PropTypes.object,
+  updateUserProfile: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -258,6 +263,9 @@ export function mapDispatchToProps(dispatch) {
     },
     updateCurrentSection: (section) => {
       dispatch(updateCurrentSection(section));
+    },
+    updateUserProfile: () => {
+      dispatch(updateProfile());
     },
   };
 }
