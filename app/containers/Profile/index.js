@@ -66,6 +66,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
 
   componentDidMount() {
     this.props.stopLoading();
+    this.props.updateUserProfile();
   }
 
   handleToggle = () => this.setState({ open: !this.state.open });
@@ -193,10 +194,7 @@ class Profile extends React.PureComponent { // eslint-disable-line react/prefer-
                           (formattedMSG) => (
                             <AccountForm
                               locale={this.props.locale}
-                              onSubmit={() => {
-                                this.props.updateUserProfile();
-                                router.push(ROUTES.HOME);
-                              }}
+                              onSubmit={() => router.push(ROUTES.HOME)}
                               submitButtonTitle={formattedMSG}
                             />
                           )
