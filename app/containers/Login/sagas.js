@@ -199,7 +199,7 @@ export function* updateUser() {
   const basicAuth = `${profileValues.get('username')}:${profileValues.get('password_1')}`;
 
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       Accept: 'application/json',
       Authorization: `Basic ${btoa(basicAuth)}`,
