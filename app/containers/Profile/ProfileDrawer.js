@@ -36,7 +36,7 @@ const HomeDrawer = (
           (formattedMSG) => (<DrawerHeader headerLabel={formattedMSG} />)
         }
       </FormattedMessage>
-      <Dashboard currentRow={currentSection} style={{ marginBottom: '15%' }} isMobile={isMobile} onSectionTouched={updateCurrentSection}/>
+      <Dashboard currentRow={currentSection} style={{ marginBottom: '15%' }} isMobile={isMobile} onSectionTouched={updateCurrentSection} updateUserProfile={this.props.updateUserProfile}/>
       <FormattedMessage {...messages.legalLabel} >
         {
           (formattedMSG) => (<DrawerHeader headerLabel={formattedMSG} />)
@@ -59,6 +59,7 @@ HomeDrawer.propTypes = {
   smallScreen: PropTypes.bool,
   updateAvatar: PropTypes.func,
   updateCurrentSection: PropTypes.func.isRequired,
+  updateUserProfile: PropTypes.func,
 };
 
 export default HomeDrawer;
