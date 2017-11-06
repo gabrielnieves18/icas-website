@@ -26,6 +26,7 @@ const HomeDrawer = (
     smallScreen,
     updateAvatar,
     updateCurrentSection,
+    updateUserProfile,
   }) =>
   (
     <Drawer docked={!isMobile} open={open || !isMobile} openSecondary={isMobile} onRequestChange={(open) => setOpen({open})}
@@ -36,7 +37,7 @@ const HomeDrawer = (
           (formattedMSG) => (<DrawerHeader headerLabel={formattedMSG} />)
         }
       </FormattedMessage>
-      <Dashboard currentRow={currentSection} style={{ marginBottom: '15%' }} isMobile={isMobile} onSectionTouched={updateCurrentSection} updateUserProfile={this.props.updateUserProfile}/>
+      <Dashboard currentRow={currentSection} style={{ marginBottom: '15%' }} isMobile={isMobile} onSectionTouched={updateCurrentSection} updateUserProfile={updateUserProfile}/>
       <FormattedMessage {...messages.legalLabel} >
         {
           (formattedMSG) => (<DrawerHeader headerLabel={formattedMSG} />)
